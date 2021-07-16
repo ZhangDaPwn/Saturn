@@ -1,0 +1,41 @@
+2021-07-16 18:04:12,188 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:04:13,734 wayfair.py[line:37] ERROR list index out of range
+2021-07-16 18:05:06,050 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:05:07,432 wayfair.py[line:37] ERROR list index out of range
+2021-07-16 18:07:33,930 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:40,370 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:41,398 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:08:50,501 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:51,718 wayfair.py[line:38] ERROR list index out of range
+2021-07-16 18:09:03,169 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:04,480 wayfair.py[line:38] ERROR list index out of range
+2021-07-16 18:09:27,925 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:29,133 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:09:48,701 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:50,043 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:10:11,642 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:10:12,876 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:11:04,150 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:11:05,426 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:12:48,190 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:12:49,475 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:13:40,421 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:13:42,392 wayfair.py[line:39] ERROR dictionary update sequence element #0 has length 1; 2 is required
+2021-07-16 18:14:29,784 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:20,895 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:22,933 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:18:22,934 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:18:41,935 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:43,207 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:18:43,208 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:19:00,429 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:19:01,707 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:19:01,708 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:19:59,764 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:20:01,019 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:20:01,020 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:20:21,382 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:20:39,108 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:20:39,109 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:22:37,082 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:27:38,170 wayfair.py[line:56] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
