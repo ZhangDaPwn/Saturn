@@ -1,41 +1,82 @@
-2021-07-16 18:04:12,188 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:04:13,734 wayfair.py[line:37] ERROR list index out of range
-2021-07-16 18:05:06,050 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:05:07,432 wayfair.py[line:37] ERROR list index out of range
-2021-07-16 18:07:33,930 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:08:40,370 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:08:41,398 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:08:50,501 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:08:51,718 wayfair.py[line:38] ERROR list index out of range
-2021-07-16 18:09:03,169 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:09:04,480 wayfair.py[line:38] ERROR list index out of range
-2021-07-16 18:09:27,925 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:09:29,133 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:09:48,701 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
-2021-07-16 18:09:50,043 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:10:11,642 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:10:12,876 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:11:04,150 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:11:05,426 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:12:48,190 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:12:49,475 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:13:40,421 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:13:42,392 wayfair.py[line:39] ERROR dictionary update sequence element #0 has length 1; 2 is required
-2021-07-16 18:14:29,784 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:18:20,895 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:18:22,933 wayfair.py[line:50] ERROR list index out of range
-2021-07-16 18:18:22,934 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:18:41,935 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:18:43,207 wayfair.py[line:50] ERROR list index out of range
-2021-07-16 18:18:43,208 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:19:00,429 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:19:01,707 wayfair.py[line:50] ERROR list index out of range
-2021-07-16 18:19:01,708 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:19:59,764 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:20:01,019 wayfair.py[line:50] ERROR list index out of range
-2021-07-16 18:20:01,020 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:20:21,382 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:20:39,108 wayfair.py[line:50] ERROR list index out of range
-2021-07-16 18:20:39,109 wayfair.py[line:39] ERROR list index out of range
-2021-07-16 18:22:37,082 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
-2021-07-16 18:27:38,170 wayfair.py[line:56] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-19 10:07:28,722 wayfair.py[line:160] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
+2021-07-19 10:07:30,734 wayfair.py[line:87] ERROR 'props'
+2021-07-19 10:08:50,186 wayfair.py[line:160] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
+2021-07-19 10:09:43,719 wayfair.py[line:161] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
+2021-07-19 10:09:45,706 wayfair.py[line:88] ERROR 'productOverviewInformation'
+2021-07-19 10:11:51,505 wayfair.py[line:161] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
+2021-07-19 10:13:06,290 wayfair.py[line:161] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 10:15:29,781 wayfair.py[line:164] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 16:41:40,960 wayfair.py[line:234] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 16:41:43,229 wayfair.py[line:201] ERROR string indices must be integers
+2021-07-19 16:41:43,229 wayfair.py[line:228] ERROR goodsOptions value is empty!
+2021-07-19 16:45:03,888 wayfair.py[line:236] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 16:45:06,190 wayfair.py[line:203] ERROR string indices must be integers
+2021-07-19 16:45:06,190 wayfair.py[line:230] ERROR goodsOptions value is empty!
+2021-07-19 16:51:35,328 wayfair.py[line:237] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 16:51:37,581 wayfair.py[line:231] ERROR goodsOptions value is empty!
+2021-07-19 16:52:33,637 wayfair.py[line:239] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 16:52:36,045 wayfair.py[line:233] ERROR goodsOptions value is empty!
+2021-07-19 17:08:27,636 wayfair.py[line:279] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 17:08:29,968 wayfair.py[line:273] ERROR goodsOptions value is empty!
+2021-07-19 17:09:42,691 wayfair.py[line:279] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 17:15:25,648 wayfair.py[line:306] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 17:15:39,460 wayfair.py[line:306] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:2
+2021-07-19 17:42:35,398 wayfair.py[line:403] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 17:42:37,333 wayfair.py[line:298] ERROR 'props'
+2021-07-19 17:43:28,978 wayfair.py[line:403] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 17:43:31,043 wayfair.py[line:298] ERROR 'optionCategories({\\"sort\\":\\"SELECTION\\"})'
+2021-07-19 17:43:58,860 wayfair.py[line:403] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 18:38:00,423 wayfair.py[line:380] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 18:38:02,479 wayfair.py[line:276] ERROR 'name'
+2021-07-19 18:42:41,334 wayfair.py[line:381] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 18:42:43,180 wayfair.py[line:277] ERROR 'name'
+2021-07-19 18:46:46,637 wayfair.py[line:386] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 19:01:48,907 wayfair.py[line:453] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:2
+2021-07-19 19:07:14,509 wayfair.py[line:488] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:2
+2021-07-19 19:10:24,862 wayfair.py[line:564] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 19:12:45,024 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-19 19:13:11,717 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:2
+2021-07-19 19:13:36,947 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:2
+2021-07-19 19:13:38,698 wayfair.py[line:203] ERROR 'Product:W003241867'
+2021-07-19 19:21:21,352 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:2
+2021-07-19 19:21:23,243 wayfair.py[line:203] ERROR 'Product:VVRE4889'
+2021-07-19 19:23:16,463 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:2
+2021-07-19 19:23:18,582 wayfair.py[line:203] ERROR 'Product:W004763304'
+2021-07-19 19:23:32,469 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:2
+2021-07-19 19:23:43,717 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:2
+2021-07-19 19:23:45,889 wayfair.py[line:203] ERROR 'Product:W001468363'
+2021-07-19 19:32:24,210 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:2
+2021-07-19 19:32:26,127 wayfair.py[line:203] ERROR 'Product:W001468363'
+2021-07-19 19:34:12,020 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:2
+2021-07-19 19:34:14,271 wayfair.py[line:203] ERROR 'Product:W004763304'
+2021-07-19 19:39:12,572 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:2
+2021-07-19 19:39:14,721 wayfair.py[line:203] ERROR 'NoneType' object is not subscriptable
+2021-07-19 19:48:57,125 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:2
+2021-07-19 19:48:59,341 wayfair.py[line:203] ERROR 'NoneType' object is not subscriptable
+2021-07-19 19:50:21,507 wayfair.py[line:429] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:2
+2021-07-19 19:53:07,555 wayfair.py[line:203] ERROR 'NoneType' object is not subscriptable
+2021-07-19 19:58:53,544 wayfair.py[line:433] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:2
+2021-07-19 19:58:55,645 wayfair.py[line:207] ERROR 'NoneType' object is not subscriptable
+2021-07-19 20:05:57,001 wayfair.py[line:441] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:2
+2021-07-20 09:57:46,526 wayfair.py[line:476] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/trent-austin-design-oliver-comforter-set-w005483620.html, Source:2
+2021-07-20 10:00:36,411 wayfair.py[line:476] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/trent-austin-design-oliver-comforter-set-w005483620.html, Source:2
+2021-07-20 10:06:37,235 wayfair.py[line:476] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/yamazaki-home-flow-self-draining-soap-dish-w003042106.html, Source:1
+2021-07-20 10:06:39,157 wayfair.py[line:216] ERROR 'Product:W003042106'
+2021-07-20 10:08:03,523 wayfair.py[line:476] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/millwood-pines-drew-genuine-teak-wood-soap-dish-w004604002.html, Source:1
+2021-07-20 10:08:05,445 wayfair.py[line:216] ERROR 'Product:W004604002'
+2021-07-20 10:46:25,666 wayfair.py[line:560] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/millwood-pines-drew-genuine-teak-wood-soap-dish-w004604002.html, Source:1
+2021-07-20 10:46:57,888 wayfair.py[line:560] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:1
+2021-07-20 10:47:17,270 wayfair.py[line:560] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-20 10:47:19,417 wayfair.py[line:182] ERROR list indices must be integers or slices, not str
+2021-07-20 10:52:44,045 wayfair.py[line:559] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-20 10:53:57,863 wayfair.py[line:559] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-20 11:01:19,100 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-20 11:01:54,112 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
+2021-07-20 11:03:19,054 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-20 11:09:04,122 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html, Source:1
+2021-07-20 11:09:24,841 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/trent-austin-design-oliver-comforter-set-w005483620.html, Source:1
+2021-07-20 11:09:45,399 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/yamazaki-home-flow-self-draining-soap-dish-w003042106.html, Source:1
+2021-07-20 11:10:10,392 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/millwood-pines-drew-genuine-teak-wood-soap-dish-w004604002.html, Source:1
+2021-07-20 11:10:44,953 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-20 11:11:15,944 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-20 11:12:02,849 wayfair.py[line:558] INFO Fetching Url:https://www.wayfair.com/bed-bath/pdp/mercury-row-eidson-soap-lotion-dispenser-w001590477.html, Source:2

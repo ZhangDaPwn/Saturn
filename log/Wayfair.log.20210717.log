@@ -1,0 +1,346 @@
+2021-07-16 18:04:12,188 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:04:13,734 wayfair.py[line:37] ERROR list index out of range
+2021-07-16 18:05:06,050 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:05:07,432 wayfair.py[line:37] ERROR list index out of range
+2021-07-16 18:07:33,930 wayfair.py[line:42] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:40,370 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:41,398 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:08:50,501 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:08:51,718 wayfair.py[line:38] ERROR list index out of range
+2021-07-16 18:09:03,169 wayfair.py[line:43] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:04,480 wayfair.py[line:38] ERROR list index out of range
+2021-07-16 18:09:27,925 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:29,133 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:09:48,701 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-16 18:09:50,043 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:10:11,642 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:10:12,876 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:11:04,150 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:11:05,426 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:12:48,190 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:12:49,475 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:13:40,421 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:13:42,392 wayfair.py[line:39] ERROR dictionary update sequence element #0 has length 1; 2 is required
+2021-07-16 18:14:29,784 wayfair.py[line:44] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:20,895 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:22,933 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:18:22,934 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:18:41,935 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:18:43,207 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:18:43,208 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:19:00,429 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:19:01,707 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:19:01,708 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:19:59,764 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:20:01,019 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:20:01,020 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:20:21,382 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:20:39,108 wayfair.py[line:50] ERROR list index out of range
+2021-07-16 18:20:39,109 wayfair.py[line:39] ERROR list index out of range
+2021-07-16 18:22:37,082 wayfair.py[line:55] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-16 18:27:38,170 wayfair.py[line:56] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 09:47:47,416 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 09:47:48,577 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:48:07,579 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 09:48:08,703 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:48:25,714 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 09:48:55,937 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 09:48:57,044 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:49:08,052 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 09:57:20,446 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 09:57:21,649 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:58:45,673 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 09:58:46,821 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:59:12,827 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 09:59:14,003 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:59:24,005 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 09:59:25,184 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 09:59:41,200 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:00:09,156 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:00:10,367 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:00:27,372 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:00:28,566 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:00:48,570 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:00:49,828 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:01:01,845 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:01:03,015 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:01:14,021 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:01:15,213 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:01:29,218 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:01:30,359 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:01:45,375 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:01:46,571 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:01:58,575 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:01:59,778 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:02:29,790 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:02:31,043 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:02:57,059 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:02:58,270 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:03:28,285 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:03:29,490 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:03:59,499 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:04:00,790 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:04:26,272 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:04:28,035 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:04:47,045 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:04:48,817 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:05:05,822 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:05:06,963 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:05:16,977 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:05:18,139 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:05:39,150 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:05:40,272 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:05:54,279 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:05:55,451 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:06:10,466 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:06:11,611 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:06:27,628 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:06:28,794 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:06:58,805 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:06:59,985 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:07:21,995 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:07:39,923 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:07:41,297 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:08:01,306 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:08:02,511 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:08:15,525 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:08:16,711 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:08:37,715 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:08:38,880 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:18:58,466 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:19:21,603 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:19:55,827 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:19:56,330 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:20:15,938 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:20:16,422 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:24:14,177 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:24:15,344 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:24:26,357 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:24:27,493 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:24:44,511 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:24:45,616 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:24:58,623 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:24:59,821 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:25:17,828 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:25:18,927 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:25:35,945 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:25:37,207 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:25:55,211 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:25:56,408 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:26:11,416 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:26:12,516 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:26:36,525 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:26:37,740 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:26:50,746 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:26:52,211 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:27:10,224 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:27:13,356 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:30:48,687 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:30:50,224 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:31:10,233 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:31:11,357 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:31:25,375 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:31:26,485 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:31:53,493 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:31:54,615 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:32:09,633 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:32:10,692 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:32:27,696 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:32:28,816 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:32:47,828 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:35:50,432 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:35:53,486 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:36:09,490 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:36:10,680 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:36:21,696 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:36:23,008 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:36:48,019 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:36:49,087 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:37:11,099 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:37:12,222 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:37:36,237 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:38:01,082 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:38:02,329 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:38:31,332 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:38:32,524 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:38:55,531 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:38:57,072 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:39:20,082 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:39:21,149 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:41:11,227 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:41:27,211 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:41:41,347 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:41:55,485 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:41:56,619 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:42:14,627 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:42:15,767 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:42:25,778 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:42:26,922 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:42:44,940 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:42:46,056 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:42:58,064 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:43:12,206 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:43:13,313 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:43:30,324 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:43:52,169 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:43:53,278 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:44:11,287 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 10:44:12,336 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:44:26,342 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:44:27,492 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:44:38,507 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:44:39,537 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:46:40,044 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:46:41,136 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:47:01,146 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 10:47:02,274 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:47:21,280 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:47:35,567 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:47:57,988 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:47:59,124 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 10:48:18,135 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:48:33,340 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 10:48:34,434 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:01:11,051 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:01:12,117 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:01:22,132 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:01:23,203 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:01:39,220 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:01:40,240 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:01:56,256 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:02:11,127 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:02:25,406 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:02:26,634 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:02:42,640 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:02:43,766 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:02:56,782 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:02:57,997 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:03:16,006 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:03:17,196 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:03:28,202 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:03:29,476 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:03:41,484 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:03:42,563 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:03:57,567 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:03:58,635 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:04:12,638 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:04:14,083 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:04:29,100 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:04:30,101 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:04:46,104 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:04:47,105 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:05:06,121 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:05:07,204 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:05:23,213 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:05:24,255 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:05:40,263 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:05:41,280 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:05:57,295 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:05:58,339 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:06:12,349 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:06:13,335 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:06:27,343 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:06:28,363 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:06:40,373 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:06:41,413 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:06:52,416 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:06:53,497 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:07:09,512 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:07:10,572 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:07:28,585 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:07:29,617 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:07:46,627 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:07:47,668 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:07:59,671 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:08:00,691 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:08:20,695 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:08:21,704 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:08:34,710 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:08:35,749 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:08:55,765 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:08:56,773 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:09:07,774 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:09:08,796 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:09:20,807 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:09:21,856 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:09:38,869 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:09:39,914 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:09:57,927 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:09:58,933 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:10:11,938 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:10:13,028 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:10:26,043 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:10:27,071 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:10:41,078 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:10:42,142 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:11:00,160 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:11:01,240 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:11:16,252 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:11:17,306 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:11:28,311 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:11:29,356 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:11:42,368 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:11:43,473 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:12:01,491 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:12:02,530 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:12:14,542 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:12:15,596 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:12:34,612 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:12:35,691 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:12:52,697 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:12:53,942 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:13:03,956 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:13:05,030 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:13:19,037 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:13:20,167 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:14:45,939 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:14:47,020 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:15:07,024 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:15:08,108 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:15:23,112 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:15:24,179 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:15:42,192 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:15:43,317 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:16:01,335 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:16:02,476 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:16:12,494 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:16:13,627 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:16:32,630 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:16:33,713 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:16:44,727 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:16:45,784 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:17:03,794 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:17:21,736 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:17:22,826 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:17:41,843 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:17:42,961 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:17:57,971 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:17:59,075 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:18:14,087 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:18:15,571 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:18:47,262 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:18:48,275 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:19:37,247 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:19:38,277 wayfair.py[line:52] ERROR list index out of range
+2021-07-17 11:20:53,541 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:28:17,648 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:28:33,682 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:28:47,573 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/mercer41-olyphant-upholstered-bench-w005425223.html, Source:1
+2021-07-17 11:29:24,621 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 11:29:39,420 wayfair.py[line:57] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w002470171.html, Source:1
+2021-07-17 11:50:26,995 wayfair.py[line:58] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:1
+2021-07-17 11:55:09,930 wayfair.py[line:59] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:1
+2021-07-17 15:39:47,026 wayfair.py[line:110] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 15:55:42,907 wayfair.py[line:110] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 15:57:36,492 wayfair.py[line:110] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 17:15:05,092 wayfair.py[line:130] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 17:15:08,014 wayfair.py[line:123] ERROR 'int' object is not subscriptable
+2021-07-17 17:16:34,796 wayfair.py[line:130] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 17:20:22,259 wayfair.py[line:90] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:1
+2021-07-17 17:22:19,628 wayfair.py[line:90] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 17:32:40,097 wayfair.py[line:94] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 17:38:25,107 wayfair.py[line:96] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html, Source:1
+2021-07-17 17:39:04,194 wayfair.py[line:96] INFO Fetching Url:https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html, Source:1
+2021-07-17 17:39:17,347 wayfair.py[line:96] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html, Source:1
+2021-07-17 17:39:34,531 wayfair.py[line:96] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html, Source:1
+2021-07-17 17:39:57,564 wayfair.py[line:96] INFO Fetching Url:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
