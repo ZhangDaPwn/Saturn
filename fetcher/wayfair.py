@@ -94,7 +94,7 @@ class Wayfair(object):
         goodsResources = []
         try:
             # 提取图片资源
-            # url = https://secure.img1-fg.wfcdn.com/im/66478205/resize-h2000-w2000%5Ecompr-r85/6647/66478205/Griffin+Glider+and+Ottoman.jpg
+            # url = https://secure.img1-fg.wfcdn.com/im/66478205/resize-h755-w755%5Ecompr-r85/6647/66478205/Griffin+Glider+and+Ottoman.jpg
             cdn_url = data['application']['props']['applicationContext']['CDN_URL']
             image_items = data['application']['props']['mainCarousel']['items']
 
@@ -292,7 +292,7 @@ class Wayfair(object):
         finally:
             return options
 
-    def parse_goods_cust_options(self, data: dict) -> list:
+    def parse_goods_options(self, data: dict) -> list:
         goodsOptions = []
         try:
             goodsOptions = self.parse_options(data=data)
@@ -336,16 +336,17 @@ class Wayfair(object):
 
     # 获取商品全部信息: goodsInfo
     @retry(stop_max_attempt_number=5)
-    def get_goods_info(self, text: str, html, source: int) -> dict:
+    def get_goods_info(self, text: str, source: int) -> dict:
         goodsInfo = {}
         try:
             entry_data = self.parse_entry_data(text=text)
-            goodsInfo['goodsResources'] = self.parse_goods_resources(data=entry_data)
-            goodsInfo['goodsSpu'] = self.parse_goods_spu(data=entry_data, img=goodsInfo['goodsResources'][0]['url'])
+            goodsResources = self.parse_goods_resources(data=entry_data)
+            goodsInfo['goodsSpu'] = self.parse_goods_spu(data=entry_data, img=goodsResources[0]['url'])
+            goodsInfo['goodsResources'] = goodsResources
 
             # 定制化
             if source == 1:
-                goodsInfo['goodsOptions'] = self.parse_goods_cust_options(data=entry_data)
+                goodsInfo['goodsOptions'] = self.parse_goods_options(data=entry_data)
                 if len(goodsInfo['goodsOptions']) > 0:
                     if len(goodsInfo['goodsOptions'][0]['values']) == 0:
                         raise Exception('goodsOptions value is empty!')
@@ -362,15 +363,27 @@ class Wayfair(object):
             return goodsInfo
 
     def main(self, url: str, source: int, goods=1, comment=0) -> dict:
+        self.log.info('Fetching:{0}, Source:{1}'.format(url, source))
         data = {}
-        self.log.info('Fetching Url:{0}, Source:{1}'.format(url, source))
         header = {
             'User-Agent': random.choice(ua_list)
         }
 
         text = SpiderHandler().get(url=url, header=header).text
 
-        data = self.get_goods_info(text=text, html='', source=source)
+        # 只爬去商品信息
+        if goods == 1 and comment == 0:
+            data = self.get_goods_info(text=text, source=source)
+
+        # 只爬去评论数据
+        elif goods == 0 and comment == 1:
+            pass
+
+        # 爬取商品数据和评论数据
+        elif goods == 1 and comment == 1:
+            pass
+
+        data['source'] = 'wayfair'
 
         return data
 
