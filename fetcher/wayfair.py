@@ -7,9 +7,8 @@
 
 """
 -------------------------------------------------
-   Description :
+   Description :  wayfair商品爬虫：家居、家具类电商网站
    date：          2021/07/16
--------------------------------------------------
 -------------------------------------------------
 """
 __author__ = 'dapwn'
@@ -17,9 +16,14 @@ __author__ = 'dapwn'
 import random
 import re
 import json
+import time
+
 import demjson
+import string
 from urllib.parse import urljoin
 from urllib import request
+
+import requests
 from retrying import retry
 
 from helper.spider_helper import SpiderHandler
@@ -29,10 +33,45 @@ from utils.tools import create_8_digit
 
 
 class Wayfair(object):
+    """
+    关于该网站的几个hash值，经源码查看，部分接口hash值是固定的
+    {"api": "getinitialWaymoreModulesQuery", "hash": "b6bd2aee3912f70b28a6ad18d4a9fca4"}
+    {"api": "fragment Video on Video_Type", "hash": "59effa6f1e60e3fb4275a0ef55f43565"}
+    {"api": "relatedProducts", "hash": "d4cfd225b6d3fc7efc5e8d1a331fb096"}
+    {"api": "product", "hash": "261fdfa45958be68b9a40c6399c9ca4e"}
+    {"api": "fragment messages on Shipping_Message", "hash": "a45397d1cae55d3f96887335dcc48b4a"}
+    {"api": "reviewQuery", "hash": "a636f23a2ad15b342db756fb5e0ea093"}  # 评论接口
+    {"api": "getTranslatedReviewPage", "hash": "464afbabb5ed765ed9f8cff28d20f7ab"}
+    {"api": "fragment shopTheLookPhotoFragment on STLPhoto", "hash": "983b83cbeb3fae256079d9db2cedeb51"}
+    {"api": "productImagesAndMetadataV2", "hash": "f637a726bf8fafed3e11579d64cedc15"}
+    {"api": "fragment getDimensionalImageId_options on ProductOption", "hash": "cced6104f635a0cd7cd0a125972e0ae7"}
+    {"api": "fragment DimensionalOptionCard_options on ProductOption", "hash": "bdb92f44734a4959d7e3d1efe4cd2384"}
+    {"api": "fragment DimensionalOptionGroup_optionCategories on ProductOptionCategory", "hash": "3fd49697ab3fe4bbdac102f3ac66dd6f"}
+    {"api": "fragment NonVisualOptionGroup_optionCategories on ProductOptionCategory", "hash": "adcea05f454f26c29093a82a1b1cb5be"}
+    {"api": "fragment VisualOptionGroup_optionCategories on ProductOptionCategory", "hash": "c452e1ba3993ac8dcf942e8ec811eef2"}
+    {"api": "standardOptions", "hash": "e7f94d4a233e6bd961f0f6890c54f52f"}
+    {"api": "customOptions", "hash": "23e9ca7ba4bd1333f7555b764e0efbd2"}
+    {"api": "selectedOptionThumbnails", "hash": "6d2f134ff59f5586e04340fc5e94871a"}
+    {"api": "fetchTitleBlockQuery", "hash": "3eb0bb1cf4502b66cbd9f027f2a61cd0"}
+    {"api": "fragment MaterialFilterUtils_material on Fabric_Type", "hash": "ec97cd4f65988a1709533978f3762e79"}
+    {"api": "fragment materialMetadataFragment on Product_Material_Interface_Type", "hash": "83eb43793d47e9d57ead7f8545f11362"}
+    {"api": "fragment sampleFragment on Sample_Product_Type", "hash": "57b6bbc53ee136e9166f88375c4e835c"}
+    {"api": "samplesQuery", "hash": "5e88bfd259fe51cb9b3f73326dd2348d"}
+    {"api": "fragment orderedSamplesFragment on me", "hash": "3e399634694fb2720547901386261a51"}
+    {"api": "samplesAvailability", "hash": "401185e7f89f183fc94d80fff26878aa"}
+    {"api": "standardKitsQuery", "hash": "052be282b00345413f1feb6d9eb1ac55"}
+    {"api": "whatsIncludedSchemaQuery", "hash": "e833228dc09174c182e97e32474c6a4d"}
+    {"api": "weightsAndDimensions", "hash": "85f8ba545fe309999686c353eecba095"}
+    """
+
     def __init__(self):
         self.name = 'Wayfair'
         self.log = LogHandler(self.name)
         self.limit = 200
+        self.review_url = 'https://www.wayfair.com/graphql'
+        self.hash = {'hash': 'a636f23a2ad15b342db756fb5e0ea093'}
+        self.sort_type = 'Most relevant'
+        self.ua = random.choice(ua_list)
 
     def parse_sf_ui_header(self, text: str) -> dict:
         data = {}
@@ -334,7 +373,111 @@ class Wayfair(object):
         finally:
             return skuList
 
-    # 获取商品全部信息: goodsInfo
+    def parse_comment(self, data: dict) -> list:
+        comments = []
+        try:
+            reviews = data['data']['product']['customerReviews']['reviews']
+
+            for review in reviews:
+                comment = {}
+                try:
+                    comment['name'] = review['reviewerName']
+                except:
+                    comment['name'] = ''
+
+                try:
+                    comment['comment'] = review['productComments']
+                except:
+                    comment['comment'] = ''
+
+                try:
+                    comment['country'] = review['reviewerLocation']
+                    date = time.strptime(review['date'], '%m/%d/%Y')
+                    timestamp = int(time.mktime(date))
+                    comment['commentTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
+
+                except:
+                    comment['country'] = ''
+                    comment['commentTime'] = '2021-01-01 00:00:00'
+
+                try:
+                    resource = []
+
+                    customer_photos = review['customerPhotos']
+                    for customer_photo in customer_photos:
+                        item = {}
+                        item['url'] = customer_photo['src']
+                        item['type'] = 1
+                        resource.append(item)
+
+                    comment['commentResourceList'] = resource
+                except:
+                    comment['commentResourceList'] = []
+
+                try:
+                    comment['star'] = str(int(int(review['ratingStars']) / 2))
+                except:
+                    comment['star'] = '5'
+
+                comment['reply'] = None
+                comment['status'] = 0  # 状态 0失效  1有效
+                comment['type'] = 1  # 评论类型 0 自评  1用户评论
+                if comment['name'] != '' and comment['comment'] != '':
+                    if len(comment['name']) < 100 and len(comment['comment']) < 3000:
+                        comments.append(comment)
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            # print("comments:", comments)
+            return comments
+
+    def fetch_comments(self, sku: str, page: int, sort_type: str, referer: str) -> dict:
+        comments_info = {}
+        try:
+            sort_order_dict = {
+                'Most relevant': 'RELEVANCE',
+                'Includes customer photos': 'IMAGE',
+                'Latest': 'DATE_DESCENDING',
+                'Most helpful': 'HELPFUL',
+                'Highest rating': 'RATING_DESCENDING',
+                'Lowest rating': 'RATING_ASCENDING',
+            }
+
+            data = {"variables": {"sku": sku.upper(),
+                                  "sort_order": sort_order_dict[sort_type],
+                                  "page_number": page,
+                                  "filter_rating": "",
+                                  "reviews_per_page": 0,
+                                  "search_query": "",
+                                  "language_code": "en"}}
+
+            header = {
+                'authority': 'www.wayfair.com',
+                'path': '/graphql?hash=a636f23a2ad15b342db756fb5e0ea093',
+                'accept': 'application/json',
+                'accept-encoding': 'gzip, deflate, br',
+                'accept-language': 'zh-CN,zh;q=0.9',
+                'content-type': 'application/json',
+                'origin': 'https://www.wayfair.com',
+                'referer': referer,
+                'sec-ch-ua': '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-origin',
+                'use-web-hash': 'true',
+                'user-agent': self.ua,
+            }
+
+            comments_info = SpiderHandler().post(url=self.review_url, header=header, params=self.hash,
+                                                 data=json.dumps(data)).json
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            # print("comments_info:", comments_info)
+            return comments_info
+
+    # 商品信息: goodsInfo
     @retry(stop_max_attempt_number=5)
     def get_goods_info(self, text: str, source: int) -> dict:
         goodsInfo = {}
@@ -362,8 +505,48 @@ class Wayfair(object):
         finally:
             return goodsInfo
 
+    # 评论信息：goodsComments
+    @retry(stop_max_attempt_number=3)
+    def get_comment_info(self, sku: str, referer: str, limit=50) -> list:
+        """
+        更换商品评论爬取策略，爬取一页解析一页，直到成功爬取满足条件的200个评论为止，商品总评论数小于200的，爬取全部评论信息
+        """
+        goodsComments = []
+        try:
+            nums = 0
+            for page in range(1, limit + 1):
+                print("正在获取第{page}页评论数据:".format(page=page))
+                try:
+                    data = self.fetch_comments(sku=sku, page=page, sort_type=self.sort_type, referer=referer)
+                    comments = self.parse_comment(data=data)
+                    if comments == []:
+                        break
+                    else:
+                        goodsComments.extend(comments)
+                    nums += len(comments)
+                except:
+                    pass
+                if nums >= 200:
+                    goodsComments = goodsComments[:200]
+                    break
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return goodsComments
+
+    def parse_sku(self, url: str):
+        sku = ''
+        try:
+            sku = url.split('.html')[0].split('-')[-1]
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return sku
+
     def main(self, url: str, source: int, goods=1, comment=0) -> dict:
         self.log.info('Fetching:{0}, Source:{1}'.format(url, source))
+        sku = self.parse_sku(url=url)
+        print("sku:", sku)
         data = {}
         header = {
             'User-Agent': random.choice(ua_list)
@@ -377,11 +560,12 @@ class Wayfair(object):
 
         # 只爬去评论数据
         elif goods == 0 and comment == 1:
-            pass
+            data['goodsComments'] = self.get_comment_info(sku=sku, referer=url)
 
         # 爬取商品数据和评论数据
         elif goods == 1 and comment == 1:
-            pass
+            data = self.get_goods_info(text=text, source=source)
+            data['goodsComments'] = self.get_comment_info(sku=sku, referer=url)
 
         data['source'] = 'wayfair'
 
@@ -398,9 +582,14 @@ if __name__ == '__main__':
     # url = 'https://www.wayfair.com/bed-bath/pdp/trent-austin-design-oliver-comforter-set-w005483620.html'  # 两种属性，一种图片，一种文字
     # url = 'https://www.wayfair.com/bed-bath/pdp/yamazaki-home-flow-self-draining-soap-dish-w003042106.html'  # 一种图片属性，展开
     # url = 'https://www.wayfair.com/bed-bath/pdp/millwood-pines-drew-genuine-teak-wood-soap-dish-w004604002.html'  # 无属性
-    url = 'https://www.wayfair.com/bed-bath/pdp/mercury-row-eidson-soap-lotion-dispenser-w001590477.html'  # 单图片
-    source = 2
-    data = Wayfair().main(url=url, source=source)
+    # url = 'https://www.wayfair.com/bed-bath/pdp/mercury-row-eidson-soap-lotion-dispenser-w001590477.html'  # 单图片
+    url = 'https://www.wayfair.com/appliances/pdp/unique-appliances-classic-retro-24-29-cu-ft-freestanding-gas-range-unqe1026.html'
+    # url = 'https://www.wayfair.com/kitchen-tabletop/pdp/cuisinart-11-piece-aluminum-non-stick-cookware-set-cui3602.html?piid=23542782'
+
+    source = 1
+    goods = 1
+    comment = 1
+    data = Wayfair().main(url=url, source=source, goods=goods, comment=comment)
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
     # 图片资源
