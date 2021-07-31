@@ -7,7 +7,7 @@
 
 """
 -------------------------------------------------
-   Description :  wayfair商品爬虫：家居、家具类电商网站
+   Description :  wayfair商品/评论爬虫：家居、家具类电商网站
    date：          2021/07/16
 -------------------------------------------------
 """
@@ -17,18 +17,13 @@ import random
 import re
 import json
 import time
-
 import demjson
-import string
 from urllib.parse import urljoin
 from urllib import request
-
-import requests
 from retrying import retry
-
-from helper.spider_helper import SpiderHandler
+from helper.http_helper import HttpHelper
 from handler.log_handler import LogHandler
-from utils.ua_wayfair import ua_list
+from utils.ua import *
 from utils.tools import create_8_digit
 
 
@@ -67,11 +62,14 @@ class Wayfair(object):
     def __init__(self):
         self.name = 'Wayfair'
         self.log = LogHandler(self.name)
-        self.limit = 200
+        self.comment_num_max = 200  # 评论爬取上限
+        self.comment_page_max = 50  # 评论爬取页数上限
+        self.nick_word_max = 100  # 评论用户名字数上限
+        self.comment_word_max = 3000  # 单条评论字数上限
         self.review_url = 'https://www.wayfair.com/graphql'
         self.hash = {'hash': 'a636f23a2ad15b342db756fb5e0ea093'}
         self.sort_type = 'Most relevant'
-        self.ua = random.choice(ua_list)
+        self.ua = random.choice(ua_pc + ua_android)
 
     def parse_sf_ui_header(self, text: str) -> dict:
         data = {}
@@ -423,7 +421,7 @@ class Wayfair(object):
                 comment['status'] = 0  # 状态 0失效  1有效
                 comment['type'] = 1  # 评论类型 0 自评  1用户评论
                 if comment['name'] != '' and comment['comment'] != '':
-                    if len(comment['name']) < 100 and len(comment['comment']) < 3000:
+                    if len(comment['name']) < self.nick_word_max and len(comment['comment']) < self.comment_word_max:
                         comments.append(comment)
         except Exception as e:
             self.log.error(e)
@@ -469,7 +467,7 @@ class Wayfair(object):
                 'user-agent': self.ua,
             }
 
-            comments_info = SpiderHandler().post(url=self.review_url, header=header, params=self.hash,
+            comments_info = HttpHelper().post(url=self.review_url, header=header, params=self.hash,
                                                  data=json.dumps(data)).json
         except Exception as e:
             self.log.error(e)
@@ -507,15 +505,15 @@ class Wayfair(object):
 
     # 评论信息：goodsComments
     @retry(stop_max_attempt_number=3)
-    def get_comment_info(self, sku: str, referer: str, limit=50) -> list:
+    def get_comment_info(self, sku: str, referer: str) -> list:
         """
         更换商品评论爬取策略，爬取一页解析一页，直到成功爬取满足条件的200个评论为止，商品总评论数小于200的，爬取全部评论信息
         """
         goodsComments = []
         try:
             nums = 0
-            for page in range(1, limit + 1):
-                print("正在获取第{page}页评论数据:".format(page=page))
+            for page in range(1, self.comment_page_max + 1):
+                print("正在获取第{page}页评论数据".format(page=page))
                 try:
                     data = self.fetch_comments(sku=sku, page=page, sort_type=self.sort_type, referer=referer)
                     comments = self.parse_comment(data=data)
@@ -526,8 +524,8 @@ class Wayfair(object):
                     nums += len(comments)
                 except:
                     pass
-                if nums >= 200:
-                    goodsComments = goodsComments[:200]
+                if nums >= self.comment_num_max:
+                    goodsComments = goodsComments[:self.comment_num_max]
                     break
         except Exception as e:
             self.log.error(e)
@@ -549,10 +547,10 @@ class Wayfair(object):
         print("sku:", sku)
         data = {}
         header = {
-            'User-Agent': random.choice(ua_list)
+            'User-Agent': self.ua
         }
 
-        text = SpiderHandler().get(url=url, header=header).text
+        text = HttpHelper().get(url=url, header=header).text
 
         # 只爬去商品信息
         if goods == 1 and comment == 0:
@@ -568,7 +566,6 @@ class Wayfair(object):
             data['goodsComments'] = self.get_comment_info(sku=sku, referer=url)
 
         data['source'] = 'wayfair'
-
         return data
 
 
@@ -576,14 +573,14 @@ if __name__ == '__main__':
     # url = 'https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html'  # 单属性
     # url = 'https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html'  # 一种图片属性
     # url = 'https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html'  # 两种属性，全是图片
-    # url = 'https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html'  # 一种图片属性,部分商品无货
+    url = 'https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html'  # 一种图片属性,部分商品无货
     # url = 'https://www.wayfair.com/furniture/pdp/greyleigh-aadvik-tufted-upholstered-low-profile-standard-bed-w003221177.html'  # 两种属性，一种图片，一种文字
     # url = 'https://www.wayfair.com/furniture/pdp/andover-mills-drusilla-tufted-upholstered-low-profile-standard-bed-w000221542.html'  # 两种属性，一种图片，一种文字
     # url = 'https://www.wayfair.com/bed-bath/pdp/trent-austin-design-oliver-comforter-set-w005483620.html'  # 两种属性，一种图片，一种文字
     # url = 'https://www.wayfair.com/bed-bath/pdp/yamazaki-home-flow-self-draining-soap-dish-w003042106.html'  # 一种图片属性，展开
     # url = 'https://www.wayfair.com/bed-bath/pdp/millwood-pines-drew-genuine-teak-wood-soap-dish-w004604002.html'  # 无属性
     # url = 'https://www.wayfair.com/bed-bath/pdp/mercury-row-eidson-soap-lotion-dispenser-w001590477.html'  # 单图片
-    url = 'https://www.wayfair.com/appliances/pdp/unique-appliances-classic-retro-24-29-cu-ft-freestanding-gas-range-unqe1026.html'
+    # url = 'https://www.wayfair.com/appliances/pdp/unique-appliances-classic-retro-24-29-cu-ft-freestanding-gas-range-unqe1026.html'
     # url = 'https://www.wayfair.com/kitchen-tabletop/pdp/cuisinart-11-piece-aluminum-non-stick-cookware-set-cui3602.html?piid=23542782'
 
     source = 1
@@ -591,6 +588,10 @@ if __name__ == '__main__':
     comment = 1
     data = Wayfair().main(url=url, source=source, goods=goods, comment=comment)
     print(json.dumps(data, indent=2, ensure_ascii=False))
+
+    from db.mongo_client import MongoDBClient
+    MongoDBClient().insert_one(data)
+
 
     # 图片资源
     # https://secure.img1-fg.wfcdn.com/im/61171812/resize-h755-w755%5Ecompr-r85/1328/132829552/Abdiel+Platform+Bed+by+Andover+Mills%E2%84%A2+Baby+%26+Kids.jpg

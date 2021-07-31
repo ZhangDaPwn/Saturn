@@ -1,2 +1,8 @@
-2021-07-16 18:20:31,975 spider_helper.py[line:61] ERROR get: https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html error: HTTPSConnectionPool(host='www.wayfair.com', port=443): Max retries exceeded with url: /v/captcha/show?goto=https%3A%2F%2Fwww.wayfair.com%2Fbaby-kids%2Fpdp%2Fabdiel-platform-standard-bed-w004763304.html%3F&px=1&captcha_status=0 (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1106: The handshake operation timed out')))
-2021-07-16 18:20:31,976 spider_helper.py[line:67] INFO get retry 5 second after
+2021-07-20 18:47:56,126 spider_helper.py[line:61] ERROR get: https://www.wayfair.com/appliances/pdp/unique-appliances-classic-retro-24-29-cu-ft-freestanding-gas-range-unqe1026.html error: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2021-07-20 18:47:56,127 spider_helper.py[line:67] INFO get retry 5 second after
+2021-07-21 10:35:03,620 spider_helper.py[line:93] ERROR post: https://www.wayfair.com/graphql error: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2021-07-21 10:35:03,620 spider_helper.py[line:99] INFO post retry 5 second after
+2021-07-21 10:35:13,779 spider_helper.py[line:93] ERROR post: https://www.wayfair.com/graphql error: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2021-07-21 10:35:13,780 spider_helper.py[line:99] INFO post retry 5 second after
+2021-07-21 10:35:18,977 spider_helper.py[line:93] ERROR post: https://www.wayfair.com/graphql error: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2021-07-21 10:35:18,977 spider_helper.py[line:99] INFO post retry 5 second after

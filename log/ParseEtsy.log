@@ -1,0 +1,147 @@
+2021-07-30 11:06:52,259 parse_helper.py[line:300] ERROR 'bool' object is not subscriptable
+2021-07-30 15:41:50,921 parse_helper.py[line:157] ERROR invalid literal for int() with base 10: '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"\n      xmlns:og="http://ogp.me/ns#"\n      xmlns:fb="https://www.facebook.com/2008/fbml"\n            class="ui-toolkit"\n    
+2021-07-30 15:42:08,888 parse_helper.py[line:157] ERROR invalid literal for int() with base 10: '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"\n      xmlns:og="http://ogp.me/ns#"\n      xmlns:fb="https://www.facebook.com/2008/fbml"\n            class="ui-toolkit"\n    
+2021-07-30 15:49:13,372 parse_helper.py[line:146] ERROR list index out of range
+2021-07-30 16:42:09,261 parse_helper.py[line:403] ERROR goodsOptions value is empty!
+2021-07-30 16:43:26,998 parse_helper.py[line:406] ERROR goodsOptions value is empty!
+2021-07-30 16:43:37,012 parse_helper.py[line:406] ERROR goodsOptions value is empty!
+2021-07-30 16:43:43,113 parse_helper.py[line:406] ERROR goodsOptions value is empty!
+2021-07-30 16:43:57,167 parse_helper.py[line:406] ERROR goodsOptions value is empty!
+2021-07-30 18:30:35,106 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:30:35,107 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:30:35,107 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:30:35,108 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:30:35,108 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:31:15,005 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:31:15,005 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:31:15,006 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:31:15,006 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:31:15,006 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:32:45,157 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:32:45,158 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:32:45,158 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:32:45,158 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:32:45,159 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:35:26,278 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:35:26,278 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:35:26,279 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:35:26,279 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:35:26,279 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:36:49,830 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:36:49,830 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:36:49,831 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:36:49,831 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:36:49,831 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:37:16,460 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:37:16,460 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:37:16,461 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:37:16,461 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:37:16,462 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:39:08,247 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:39:08,248 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:39:08,248 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:39:08,249 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:39:08,249 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:42:55,500 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:42:55,501 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:42:55,501 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:42:55,502 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:42:55,502 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:44:54,797 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:44:54,798 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:44:54,798 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:44:54,799 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:44:54,799 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:47:20,577 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:47:20,578 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:47:20,578 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:47:20,579 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:47:20,580 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:47:55,868 parse_helper.py[line:154] ERROR list index out of range
+2021-07-30 18:47:55,868 parse_helper.py[line:167] ERROR list index out of range
+2021-07-30 18:47:55,869 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:47:55,869 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:47:55,869 parse_helper.py[line:298] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 18:49:32,718 parse_helper.py[line:226] ERROR 'granify'
+2021-07-30 18:49:32,718 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:50:32,456 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:50:32,457 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:50:32,457 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:50:32,457 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:56:02,545 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:56:02,546 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:56:02,546 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:56:02,547 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:57:23,193 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:57:23,194 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:57:23,194 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 18:57:23,194 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 18:59:26,531 parse_helper.py[line:155] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:59:26,532 parse_helper.py[line:168] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:59:26,532 parse_helper.py[line:227] ERROR 'data'
+2021-07-30 18:59:26,533 parse_helper.py[line:255] ERROR 'goods'
+2021-07-30 18:59:53,069 parse_helper.py[line:156] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:59:53,070 parse_helper.py[line:169] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 18:59:53,071 parse_helper.py[line:228] ERROR 'data'
+2021-07-30 18:59:53,071 parse_helper.py[line:256] ERROR 'goods'
+2021-07-30 19:01:18,008 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:18,009 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:18,009 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 19:01:18,010 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 19:01:28,115 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:28,116 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:28,116 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 19:01:28,116 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 19:01:49,910 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:49,911 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:01:49,911 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 19:01:49,912 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 19:02:51,343 parse_helper.py[line:154] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:02:51,344 parse_helper.py[line:167] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:02:51,344 parse_helper.py[line:226] ERROR 'data'
+2021-07-30 19:02:51,345 parse_helper.py[line:254] ERROR 'goods'
+2021-07-30 19:03:08,037 parse_helper.py[line:155] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:03:08,038 parse_helper.py[line:168] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:03:08,038 parse_helper.py[line:227] ERROR 'data'
+2021-07-30 19:03:08,039 parse_helper.py[line:255] ERROR 'goods'
+2021-07-30 19:03:26,177 parse_helper.py[line:155] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:03:26,178 parse_helper.py[line:168] ERROR cannot use a string pattern on a bytes-like object
+2021-07-30 19:03:26,178 parse_helper.py[line:227] ERROR 'data'
+2021-07-30 19:03:26,178 parse_helper.py[line:255] ERROR 'goods'
+2021-07-30 19:16:55,631 parse_helper.py[line:227] ERROR 'granify'
+2021-07-30 19:16:55,631 parse_helper.py[line:255] ERROR 'goods'
+2021-07-30 20:08:47,826 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:48,491 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:49,274 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:49,916 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:50,614 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:51,340 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:51,998 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:52,685 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:53,345 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:54,012 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:54,672 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:55,324 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:08:55,995 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:09,175 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:09,832 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:10,501 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:11,135 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:11,797 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:12,494 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:13,162 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:13,829 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-30 20:09:14,517 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:04:15,948 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:04:16,634 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:04:17,295 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:04:18,019 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:06:49,644 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:06:50,294 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:06:50,945 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 09:06:51,595 parse_helper.py[line:514] ERROR 'NoneType' object has no attribute 'xpath'
+2021-07-31 10:54:47,174 parse_helper.py[line:154] ERROR list index out of range
+2021-07-31 10:54:47,175 parse_helper.py[line:167] ERROR list index out of range
+2021-07-31 10:54:47,175 parse_helper.py[line:226] ERROR 'data'
+2021-07-31 10:54:47,175 parse_helper.py[line:269] ERROR 'goods'
+2021-07-31 10:54:47,176 parse_helper.py[line:313] ERROR 'NoneType' object has no attribute 'xpath'

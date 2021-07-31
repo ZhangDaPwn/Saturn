@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2021/7/17 11:32
 # @Author   : dapwn
-# @File     : ua_wayfair.py
+# @File     : ua.py
 # @Software : PyCharm
-ua_list = [
+
+ua_pc = [
     "Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11",
     "Opera/9.80 (Windows NT 6.1; U; zh-cn) Presto/2.9.168 Version/11.50",
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11",
@@ -23,7 +24,9 @@ ua_list = [
     "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2",
     "Mozilla/5.0 (X11; U; Linux x86_64; zh-CN; rv:1.9.2.10) Gecko/20100922 Ubuntu/10.10 (maverick) Firefox/3.6.10",
     "mozilla/5.0 (windows NT 10.0; WOW64) applEweBkit/537.36 (KHTML, like gecko) chrome/75.0.3770.100 safari/537.36",
+]
 
+ua_android = [
     "Mozilla/5.0 (Linux; Android 7.0; SM-G9350 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36 baiduboxapp/8.1 (Baidu; P1 7.0)",
     "Mozilla/5.0 (Linux; Android 7.1.1; MI 6 Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/59.0.3071.125 Mobile Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN",
     "Mozilla/5.0 (Linux; Android 7.0; SM-N920C Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.98 Mobile Safari/537.36 MicroMessenger/6.5.16.1101 NetType/WIFI Language/zh_CN",
@@ -704,3 +707,4 @@ ua_list = [
     "Mozilla/5.0 (Linux; U; Android 7.0; zh-CN; m3 note Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/11.8.6.966 Mobile Safari/537.36",
     "Mozilla/5.0 (Linux; Android 7.0; MHA-AL00 Build/HUAWEIMHA-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043808 Mobile Safari/537.36 MicroMessenger/6.6.2.1240(0x26060235) NetType/WIFI Language/zh_CN",
 ]
+
