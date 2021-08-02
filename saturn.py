@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print(slogan, '\n')
     uvicorn.run(
         app='saturn:app',
-        host='localhost',
+        host='0.0.0.0',
         port=PORT,
         reload=True,
         debug=True
