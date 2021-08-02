@@ -34,7 +34,7 @@ class Amazon(object):
         self.symbols = ["$", "€", "£", "¥", "Kč", "₹", "₪", "₱", "₫", "฿", "NT$", "₺", "zł", "R$"]
 
     def driver_init(self):
-        headless = False
+        headless = True
         options = ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-automation'])  # 开发者选项
         options.add_argument('--no-sandbox')  # 沙盒模式
@@ -186,8 +186,8 @@ if __name__ == '__main__':
     url = 'https://www.amazon.com/Apple-MacBook-13-inch-256GB-Storage/dp/B08N5N6RSS/ref=lp_565108_1_8?th=1'
     url = 'https://www.amazon.com/Cruiser-Skateboards-Kids-Teens-Adults-Beginners-Canadian-Skateboard/dp/B08XV2ZNC2/ref=sr_1_1_sspa?dchild=1&keywords=skateboards+and+longboards&pf_rd_i=11051398011&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=861b6c06-8668-44fe-a71e-09a0daba2ded&pf_rd_r=ABVCAYC63TN07S9NVXH4&pf_rd_s=merchandised-search-5&pf_rd_t=101&qid=1625815550&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUVJBVDlDS0laSjZZJmVuY3J5cHRlZElkPUEwMzc0ODYwUTM2MUFVS05GUlRBJmVuY3J5cHRlZEFkSWQ9QTA5NjYzNTcxVVRWWEpYTUFUSFdRJndpZGdld'
     url = 'https://www.amazon.com/Leggings-Depot-JGA2-HCHARCOAL-L-Heather-Charcoal/dp/B0846BZ8RX?th=1'
-    source = 1
-    goods = 1
+    source = 0
+    goods = 0
     comment = 1
     data = Amazon().main(url=url, source=source, goods=goods, comment=comment)
     print(json.dumps(data, indent=2, ensure_ascii=False))
