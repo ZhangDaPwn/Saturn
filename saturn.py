@@ -17,7 +17,7 @@ from settings import BANNER, slogan, PORT
 from handler.log_handler import LogHandler
 
 app = FastAPI()
-name = 'main'
+name = 'saturn'
 log = LogHandler(name=name)
 
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     print(BANNER)
     print(slogan, '\n')
     uvicorn.run(
-        app='main:app',
+        app='saturn:app',
         host='localhost',
         port=PORT,
         reload=True,

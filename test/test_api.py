@@ -8,15 +8,19 @@ import json
 
 import requests
 
+ip = '184.169.198.167'
+port = 9696
+
 
 def post_product(data):
-    resp = requests.post(url='http://127.0.0.1:9696/product/', data=json.dumps(data))
+    resp = requests.post(url='http://{ip}:{port}/product/'.format(ip=ip, port=port), data=json.dumps(data))
     print(resp.json())
 
 
 def post_comment(data):
-    resp = requests.post(url='http://127.0.0.1:9696/comment/', data=json.dumps(data))
-    print(json.dumps(resp.json(), indent=2, ensure_ascii=False))
+    resp = requests.post(url='http://{ip}:{port}/comment/'.format(ip=ip, port=port), data=json.dumps(data))
+    print(resp)
+    # print(json.dumps(resp.json(), indent=2, ensure_ascii=False))
 
 
 if __name__ == '__main__':
@@ -26,11 +30,12 @@ if __name__ == '__main__':
     #     'source': 1
     # }
     # post_product(product)
-    comment = {
-        'platform': 'amazon',
-        'url': 'https://www.amazon.com/Leggings-Depot-JGA2-HCHARCOAL-L-Heather-Charcoal/dp/B0846BZ8RX?th=1',
-    }
-    post_comment(comment)
+
+    # comment = {
+    #     'platform': 'amazon',
+    #     'url': 'https://www.amazon.com/Leggings-Depot-JGA2-HCHARCOAL-L-Heather-Charcoal/dp/B0846BZ8RX?th=1',
+    # }
+    # post_comment(comment)
 
     comment = {
         'platform': 'wayfair',
