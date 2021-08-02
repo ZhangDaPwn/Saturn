@@ -20,14 +20,20 @@ def post_comment(data):
 
 
 if __name__ == '__main__':
-    product = {
-        'platform': 'etsy',
-        'url': 'https://www.etsy.com/listing/748928449/bear-necklace-black-or-brown-grizzle',
-        'source': 1
-    }
+    # product = {
+    #     'platform': 'etsy',
+    #     'url': 'https://www.etsy.com/listing/748928449/bear-necklace-black-or-brown-grizzle',
+    #     'source': 1
+    # }
+    # post_product(product)
     comment = {
-        'platform': 'etsy',
-        'url': 'https://www.etsy.com/listing/748928449/bear-necklace-black-or-brown-grizzle',
+        'platform': 'amazon',
+        'url': 'https://www.amazon.com/Leggings-Depot-JGA2-HCHARCOAL-L-Heather-Charcoal/dp/B0846BZ8RX?th=1',
     }
-    post_product(product)
+    post_comment(comment)
+
+    comment = {
+        'platform': 'wayfair',
+        'url': 'https://www.wayfair.com/furniture/pdp/sand-stable-bridget-hall-tree-with-shoe-storage-w003044752.html',
+    }
     post_comment(comment)
