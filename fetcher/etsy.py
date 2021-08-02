@@ -15,19 +15,20 @@
 __author__ = 'dapwn'
 
 import json
+import random
 import time
 import requests
 from requests import Response
-from fake_useragent import UserAgent
 from handler.log_handler import LogHandler
 from helper.parse_helper import ParseEtsy, CovertData
+from utils.ua import ua_pc
 
 
 class Etsy(object):
     def __init__(self):
         self.name = 'Etsy'
         self.log = LogHandler(self.name)
-        self.ua = UserAgent().random
+        self.ua = random.choice(ua_pc)
         self.comment_num_max = 200  # 评论爬取上限
         self.comment_page_max = 50  # 评论爬取页数上限
         self.nick_word_max = 100  # 评论用户名字数上限
