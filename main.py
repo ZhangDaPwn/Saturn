@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 
 from fetcher.etsy import Etsy
 from fetcher.amazon import Amazon
+from fetcher.wayfair import Wayfair
 from settings import BANNER, slogan, PORT
 from handler.log_handler import LogHandler
 
@@ -51,7 +52,7 @@ async def product(item: Product):
         elif item.platform == 'amazon':
             data = Amazon().main(url=item.url, source=item.source, goods=item.goods)
         elif item.platform == 'wayfair':
-            pass
+            data = Wayfair().main(url=item.url, source=item.source, goods=item.goods)
     except Exception as e:
         log.error(str(e))
     finally:
@@ -70,7 +71,7 @@ async def comment(item: Comment):
         if item.platform == 'amazon':
             data = Amazon().main(url=item.url, comment=item.comment)
         elif item.platform == 'wayfair':
-            pass
+            data = Wayfair().main(url=item.url, comment=item.comment)
     except Exception as e:
         log.error(str(e))
     finally:

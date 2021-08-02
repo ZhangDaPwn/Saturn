@@ -16,6 +16,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from utils.ua import ua_pc
 from handler.log_handler import LogHandler
 from helper.parse_helper import ParseAmazon
+from settings import COMMENT_NUMBER_MAX, COMMENT_PAGE_MAX
 
 
 class Amazon(object):
@@ -24,7 +25,6 @@ class Amazon(object):
         self.log = LogHandler(self.name)
         self.pa = ParseAmazon(text='')
         self.ua = random.choice(ua_pc)
-        print("User-Agent:{}".format(self.ua))
         self.cookie = ''
         self.asin = ''
         self.driver_init()
@@ -32,8 +32,6 @@ class Amazon(object):
         self.url_comment_first_page = 'https://www.amazon.com/product-reviews/{}/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
         self.url_comment_next_page = 'https://www.amazon.com/product-reviews/{}/ref=cm_cr_getr_d_paging_btm_{}?ie=UTF8&pageNumber={}&reviewerType=all_reviews&pageSize=10'
         self.symbols = ["$", "€", "£", "¥", "Kč", "₹", "₪", "₱", "₫", "฿", "NT$", "₺", "zł", "R$"]
-        self.comment_num_max = 100
-        self.comment_page_max = 10
 
     def driver_init(self):
         headless = False
@@ -132,7 +130,7 @@ class Amazon(object):
                     url = self.url_comment_next_page.format(self.asin, page, page)
                     page_source = self.get_comment_page_source(url=url)
                 comments.extend(self.pa.parse_comment(text=page_source))
-                if len(comments) >= self.comment_num_max:
+                if len(comments) >= COMMENT_NUMBER_MAX:
                     break
         except Exception as e:
             self.log.error(str(e))
@@ -158,8 +156,8 @@ class Amazon(object):
                 self.asin = self.pa.parse_asin
                 comment_number = self.pa.parse_comment_number
                 pages = math.ceil(comment_number / 10)
-                if pages > self.comment_page_max:
-                    pages = self.comment_page_max
+                if pages > COMMENT_PAGE_MAX:
+                    pages = COMMENT_PAGE_MAX
                 data['goodsComments'] = self.get_comment_info(pages=pages)
 
             # 爬取商品数据和评论数据
@@ -171,8 +169,8 @@ class Amazon(object):
                 self.asin = self.pa.parse_asin
                 comment_number = self.pa.parse_comment_number
                 pages = math.ceil(comment_number / 10)
-                if pages > self.comment_page_max:
-                    pages = self.comment_page_max
+                if pages > COMMENT_PAGE_MAX:
+                    pages = COMMENT_PAGE_MAX
                 data['goodsComments'] = self.get_comment_info(pages=pages)
         except Exception as e:
             self.log.error(str(e))

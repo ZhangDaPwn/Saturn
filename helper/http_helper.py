@@ -189,14 +189,6 @@ class HttpHelper(object):
         return self.response.content.decode('utf-8')
 
     @property
-    def json(self) -> dict:
-        try:
-            return self.response.json()
-        except Exception as e:
-            self.log.error(str(e))
-            return {}
-
-    @property
     def cookie(self) -> str:
         try:
             return CovertData().cookies_to_cookie(requests.utils.dict_from_cookiejar(self.response.cookies))

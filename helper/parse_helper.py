@@ -20,12 +20,13 @@ import random
 import time
 
 import demjson
-from urllib.parse import urljoin
-from html import unescape  # 处理html中的转义字符
-from html import escape
+from html import unescape
 from lxml import etree
+from urllib.parse import urljoin
+from urllib import request
 
 from handler.log_handler import LogHandler
+from settings import *
 
 
 class ParseEtsy(object):
@@ -113,15 +114,10 @@ class ParseEtsy(object):
         self.text = text
         self.base_data = self.parse_base_data
         self.context = self.parse_context
-        self.comment_num_max = 200  # 评论爬取上限
-        self.comment_page_max = 30  # 评论爬取页数上限
-        self.nick_word_max = 100  # 评论用户名字数上限
-        self.comment_word_max = 3000
-        self.reply_word_max = 300
 
     # 提取商品收藏数
     @property
-    def parse_collections(self):
+    def parse_collections(self) -> int:
         collections = 0
         try:
             pattern = re.compile('collection-count">(.*?)</a>', re.DOTALL)
@@ -133,7 +129,7 @@ class ParseEtsy(object):
 
     # 提取商品销量
     @property
-    def parse_sales(self):
+    def parse_sales(self) -> int:
         sales = 0
         try:
             pattern = re.compile(r'<span class="wt-text-caption">(.*?)</span>', re.DOTALL)
@@ -462,7 +458,7 @@ class ParseEtsy(object):
                 try:
                     item['name'] = self.ps.delete_useless_string(
                         div.xpath('.//p[@class="wt-text-caption wt-text-gray"]/a/text()')[0])
-                    if len(item['name']) > self.nick_word_max:
+                    if len(item['name']) > NICK_WORD_MAX:
                         item['name'] = ''
                 except:
                     item['name'] = ''
@@ -470,7 +466,7 @@ class ParseEtsy(object):
                 try:
                     item['comment'] = self.ps.delete_useless_string(
                         div.xpath('.//p[@id="review-preview-toggle-{}"]/text()'.format(index))[0])
-                    if len(item['comment']) > self.comment_word_max:
+                    if len(item['comment']) > COMMENT_WORD_MAX:
                         item['comment'] = ''
                 except:
                     item['comment'] = ''
@@ -478,7 +474,7 @@ class ParseEtsy(object):
                 try:
                     item['reply'] = self.ps.delete_useless_string(
                         div.xpath('.//p[@id="review-preview-toggle-{}_response"]/text()'.format(index))[0])
-                    if len(item['reply']) > self.reply_word_max:
+                    if len(item['reply']) > REPLY_WORD_MAX:
                         item['reply'] = None
                 except:
                     item['reply'] = None
@@ -530,11 +526,6 @@ class ParseAmazon(object):
         self.tree = etree.HTML(self.text)
         self.btf = self.parse_btf
         self.symbols = ["$", "€", "£", "¥", "Kč", "₹", "₪", "₱", "₫", "฿", "NT$", "₺", "zł", "R$"]
-        self.comment_num_max = 200  # 评论爬取上限
-        self.comment_page_max = 30  # 评论爬取页数上限
-        self.nick_word_max = 100  # 评论用户名字数上限
-        self.comment_word_max = 3000  # 单条评论字数上限
-        self.reply_word_max = 300  # 回复评论字数上限
 
     # 亚马逊评论数据中的\ \n \t \r删除
     def delete_backslash(self, string: str) -> str:
@@ -569,7 +560,7 @@ class ParseAmazon(object):
 
     # 提取商品图片等资源
     @property
-    def parse_images_1(self):
+    def parse_images_1(self) -> list:
         data = []
         try:
             try:
@@ -587,7 +578,7 @@ class ParseAmazon(object):
 
     # 提取商品图片等资源
     @property
-    def parse_images_2(self):
+    def parse_images_2(self) -> list:
         data = []
         try:
             try:
@@ -739,8 +730,9 @@ class ParseAmazon(object):
         # 商品描述
         try:
             description_html = \
-            self.tree.xpath('//div[@id="productDescription_feature_div" and @data-template-name="productDescription"]')[
-                0]
+                self.tree.xpath(
+                    '//div[@id="productDescription_feature_div" and @data-template-name="productDescription"]')[
+                    0]
             try:
                 # 删除script节点
                 script_html = description_html.xpath('.//script')[0]
@@ -1014,7 +1006,7 @@ class ParseAmazon(object):
                 try:
                     comment['name'] = div.xpath('.//span[@class="a-profile-name"]/text()')[0]
                     # print("nick:", comment['name'])
-                    if len(comment['name']) > self.nick_word_max:
+                    if len(comment['name']) > NICK_WORD_MAX:
                         comment['name'] = ''
                 except:
                     comment['name'] = ''
@@ -1023,7 +1015,7 @@ class ParseAmazon(object):
                     # 评论内容
                     contexts = div.xpath('.//span[@data-hook="review-body"]//span/text()')
                     comment['comment'] = '<br>'.join(contexts).strip()
-                    if len(comment['comment']) > self.comment_word_max:
+                    if len(comment['comment']) > COMMENT_WORD_MAX:
                         comment['comment'] = ''
                 except:
                     comment['comment'] = ''
@@ -1080,6 +1072,457 @@ class ParseAmazon(object):
         except Exception as e:
             self.log.error(str(e))
         finally:
+            return comments
+
+
+class ParseWayfair(object):
+    def __init__(self, text: str):
+        self.name = 'ParseWayfair'
+        self.platform = 'Wayfair'
+        self.log = LogHandler(self.name)
+        self.text = text
+        self.entry_data = self.parse_entry_data
+        self.image = ''
+
+    def api2hash(self):
+        data = [
+            {"api": "getinitialWaymoreModulesQuery", "hash": "b6bd2aee3912f70b28a6ad18d4a9fca4"},
+            {"api": "fragment Video on Video_Type", "hash": "59effa6f1e60e3fb4275a0ef55f43565"},
+            {"api": "relatedProducts", "hash": "d4cfd225b6d3fc7efc5e8d1a331fb096"},
+            {"api": "product", "hash": "261fdfa45958be68b9a40c6399c9ca4e"},
+            {"api": "fragment messages on Shipping_Message", "hash": "a45397d1cae55d3f96887335dcc48b4a"},
+            {"api": "reviewQuery", "hash": "a636f23a2ad15b342db756fb5e0ea093"},  # 评论接口
+            {"api": "getTranslatedReviewPage", "hash": "464afbabb5ed765ed9f8cff28d20f7ab"},
+            {"api": "fragment shopTheLookPhotoFragment on STLPhoto", "hash": "983b83cbeb3fae256079d9db2cedeb51"},
+            {"api": "productImagesAndMetadataV2", "hash": "f637a726bf8fafed3e11579d64cedc15"},
+            {"api": "fragment getDimensionalImageId_options on ProductOption",
+             "hash": "cced6104f635a0cd7cd0a125972e0ae7"},
+            {"api": "fragment DimensionalOptionCard_options on ProductOption",
+             "hash": "bdb92f44734a4959d7e3d1efe4cd2384"},
+            {"api": "fragment DimensionalOptionGroup_optionCategories on ProductOptionCategory",
+             "hash": "3fd49697ab3fe4bbdac102f3ac66dd6f"},
+            {"api": "fragment NonVisualOptionGroup_optionCategories on ProductOptionCategory",
+             "hash": "adcea05f454f26c29093a82a1b1cb5be"},
+            {"api": "fragment VisualOptionGroup_optionCategories on ProductOptionCategory",
+             "hash": "c452e1ba3993ac8dcf942e8ec811eef2"},
+            {"api": "standardOptions", "hash": "e7f94d4a233e6bd961f0f6890c54f52f"},
+            {"api": "customOptions", "hash": "23e9ca7ba4bd1333f7555b764e0efbd2"},
+            {"api": "selectedOptionThumbnails", "hash": "6d2f134ff59f5586e04340fc5e94871a"},
+            {"api": "fetchTitleBlockQuery", "hash": "3eb0bb1cf4502b66cbd9f027f2a61cd0"},
+            {"api": "fragment MaterialFilterUtils_material on Fabric_Type", "hash": "ec97cd4f65988a1709533978f3762e79"},
+            {"api": "fragment materialMetadataFragment on Product_Material_Interface_Type",
+             "hash": "83eb43793d47e9d57ead7f8545f11362"},
+            {"api": "fragment sampleFragment on Sample_Product_Type", "hash": "57b6bbc53ee136e9166f88375c4e835c"},
+            {"api": "samplesQuery", "hash": "5e88bfd259fe51cb9b3f73326dd2348d"},
+            {"api": "fragment orderedSamplesFragment on me", "hash": "3e399634694fb2720547901386261a51"},
+            {"api": "samplesAvailability", "hash": "401185e7f89f183fc94d80fff26878aa"},
+            {"api": "standardKitsQuery", "hash": "052be282b00345413f1feb6d9eb1ac55"},
+            {"api": "whatsIncludedSchemaQuery", "hash": "e833228dc09174c182e97e32474c6a4d"},
+            {"api": "weightsAndDimensions", "hash": "85f8ba545fe309999686c353eecba095"},
+        ]
+
+    def parse_sku(self, url: str) -> str:
+        sku = ''
+        try:
+            sku = url.split('.html')[0].split('-')[-1]
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return sku
+
+    @property
+    def parse_sf_ui_header(self) -> dict:
+        data = {}
+        try:
+            pattern = re.compile(
+                r'<script type="text/javascript">window\["sf-ui-header::WEBPACK_ENTRY_DATA"]=(.*?);</script>')
+            WEBPACK_ENTRY_DATA = re.findall(pattern, self.text)[0]
+            data = demjson.decode(WEBPACK_ENTRY_DATA)
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    @property
+    def parse_entry_data(self) -> dict:
+        data = {}
+        try:
+            pattern = re.compile(r'<script type="text/javascript">window\["WEBPACK_ENTRY_DATA"]=(.*?);</script>')
+            WEBPACK_ENTRY_DATA = re.findall(pattern, self.text)[0]
+            data = demjson.decode(WEBPACK_ENTRY_DATA)
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    # 按照商品池参数规格提取商品数据
+    @property
+    def parse_goods_info(self) -> dict:
+        data = {}
+        try:
+            goods = {}
+            props = self.entry_data['application']['props']
+            title = props['title']
+            goods['id'] = props['sku']
+            goods['name'] = title['name']
+            goods['url'] = props['url']
+            goods['image'] = self.image
+            goods['brief'] = ''
+            goods['description'] = props['productOverviewInformation']['description']
+            goods['category'] = props['breadcrumbs']['breadcrumbs'][-1]['title'] if 'breadcrumbs' in props else ''
+            goods['categoryId'] = ''
+            goods['commentNumber'] = title['customerReviews']['ratingCount']
+            goods['ratingNumber'] = goods['commentNumber']
+            goods['rating'] = round(float(title['customerReviews']['averageRatingValue']), 2)
+            goods['regularPrice'] = props['price']['listPrice'] if 'price' in props else 0
+            goods['price'] = props['price']['salePrice']
+            goods['shelfTime'] = ''
+            goods['updateTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 更新时间
+            goods['purchaseMin'] = props['quantity']['minimum_order_quantity']
+            goods['purchaseMax'] = props['quantity']['available_quantity']
+            goods['sales'] = random.randint(200, 800)
+            goods['visit'] = random.randint(1000, 5000)
+            goods['collection'] = random.randint(800, 1000)
+
+            data['goods'] = goods
+            data['id'] = goods['id']
+            data['platform'] = self.platform
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            # print(json.dumps(data, indent=2, ensure_ascii=False))
+            return data
+
+    # 商品基础数据：goodsSpu
+    @property
+    def parse_goods_spu(self) -> dict:
+        data = {}
+        try:
+            goods = self.parse_goods_info['goods']
+            # 基础参数中提取数据部分
+            data['goodsNum'] = goods['id']
+            data['goodsName'] = goods['name']
+            data['mainImg'] = goods['image']
+            data['brief'] = goods['brief']
+            data['description'] = goods['description'].replace('\n', '<br>')
+            data['commentScore'] = goods['rating']
+            data['defaultPrice'] = goods['price']
+            data['shelfTime'] = goods['shelfTime']
+            data['updateTime'] = goods['updateTime']
+            data['purchaseMin'] = goods['purchaseMin']
+            data['purchaseMax'] = goods['purchaseMax']
+            data['sales'] = goods['sales']
+            data['visitNum'] = goods['visit']
+            data['collection'] = goods['collection']
+        except Exception as error:
+            self.log.error(error)
+        finally:
+            return data
+
+    # 商品图片及视频数据：goodsResources
+    @property
+    def parse_goods_resources(self) -> list:
+        data = []
+        try:
+            # 提取图片资源
+            # url = https://secure.img1-fg.wfcdn.com/im/66478205/resize-h755-w755%5Ecompr-r85/6647/66478205/Griffin+Glider+and+Ottoman.jpg
+            cdn_url = self.entry_data['application']['props']['applicationContext']['CDN_URL']
+            image_items = self.entry_data['application']['props']['mainCarousel']['items']
+
+            for image_item in image_items:
+                item = {}
+                image_id = image_item['imageId']
+                # width = image_item['width']  # 根据json数据图片宽高，然后拼接可能部分图片有点问题
+                # height = image_item['height']
+                width = 800
+                height = 800
+                product_name = self.entry_data['application']['props']['title']['name']
+                image_id_4_digit = str(image_id)[:4]
+                words = []
+                for word in product_name.split(' '):
+                    words.append(request.quote(word))
+                image_name = '+'.join(words)
+                image_url = urljoin(cdn_url,
+                                    'im/{digit_8}/resize-h{height}-w{width}%5Ecompr-r85/{image_id_4_digit}/{image_id}/{image_name}.jpg'.format(
+                                        digit_8=NumberHandler().create_8_digit(), height=height, width=width,
+                                        image_id_4_digit=image_id_4_digit, image_id=image_id, image_name=image_name))
+                # print("image_url:", image_url)
+
+                item['url'] = image_url
+                item['type'] = 1
+                data.append(item)
+
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            self.image = data[0]['url']
+            return data
+
+    # 类型一：展示数据放在props里面
+    @property
+    def parse_options_props(self) -> list:
+        item_options = []
+        try:
+            standard_options = self.entry_data['application']['props']['options']['standardOptions']
+
+            if len(standard_options) > 0:
+                for standard_option in standard_options:
+                    item_option = {}
+                    item_values = []
+                    category_id = 2
+
+                    options = standard_option['options']  # 参数值
+                    for option in options:
+                        name = option['name']  # 参数名
+                        thumbnail_id = option['thumbnail_id']  # 相册id
+                        # 图片选项
+                        if thumbnail_id != "":
+                            # 组装image_name
+                            # image_name = '+'.join(name.split(' '))
+                            # 拼装image_url
+                            image_id_4_digit = str(thumbnail_id)[:4]
+                            image_url = 'https://secure.img1-fg.wfcdn.com/im/{digit_8}/resize-h800-w800%5Ecompr-r85/{image_id_4_digit}/{image_id}/default_name.jpg'.format(
+                                digit_8=NumberHandler().create_8_digit(), image_id_4_digit=image_id_4_digit,
+                                image_id=thumbnail_id)
+
+                            item_value = {}
+                            item_value['value'] = image_url
+                            item_value['price'] = 0
+                            item_value['type'] = 2
+                            item_value['tips'] = name
+                            item_values.append(item_value)
+                        # 文本选项
+                        else:
+                            category_id = 1
+                            item_value = {}
+                            item_value['value'] = name
+                            item_value['price'] = 0
+                            item_value['type'] = 1
+                            item_value['tips'] = ''
+                            item_values.append(item_value)
+
+                    item_option['main'] = 1  # 是否为主规格, 0：子规格 1：主规格
+                    item_option['field'] = standard_option['category_name']  # 规格名称
+                    item_option['type'] = category_id
+                    item_option['values'] = item_values
+                    item_options.append(item_option)
+            else:
+                print("该商品无规格选项")
+
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return item_options
+
+    # 类型二：展示数据放在apollo里面
+    @property
+    def parse_options_apollo(self) -> list:
+        item_options = []
+        try:
+            # 显示数据
+            apollo_state = self.entry_data['application']['__APOLLO_STATE__']
+            sku = self.entry_data['application']['props']['sku']  # W003221177
+            product_name = "Product:{}".format(sku)  # Product:W003221177
+
+            options = apollo_state[product_name]['options']["optionCategories({\"sort\":\"SELECTION\"})"]
+
+            for option in options:
+                item_option = {}
+                item_values = []
+
+                __typename = option['__typename']  # ProductOptionCategory
+                category_id = option['id']  # 2  规格类型：图片类型
+                name = option['name']  # # 规格名称:Color
+
+                option_values = option["options({\"sort\":\"DEFAULT_MATERIAL_ONLY\"})"]
+
+                # 1: 文本选项
+                if category_id == 1:
+                    for option_value in option_values:
+                        __ref = option_value['__ref']  # ProductOption:11166112
+                        product_option = apollo_state[__ref]
+                        value_name = product_option['name']
+
+                        item_value = {}
+                        item_value['value'] = value_name
+                        item_value['price'] = 0
+                        item_value['type'] = 1
+                        item_value['tips'] = ''
+                        item_values.append(item_value)
+                        # print("文本value：", item_value)
+
+                # 2: 图片选项
+                elif category_id == 2:
+                    for option_value in option_values:
+                        __ref = option_value['__ref']  # ProductOption:59162099
+                        product_option = apollo_state[__ref]
+                        value_name = product_option['name']  # Gray
+                        try:
+                            material = product_option['material']  # {"__ref": "Fabric_Type:190043"}
+                            __ref_meterial = material['__ref']  # Fabric_Type:190043
+                            fabric_type = apollo_state[__ref_meterial]
+                            __ref_image = fabric_type['image']['__ref']  # Image:85553994
+                            # 获取属性image_id
+                            image_id = apollo_state[__ref_image]['id']  # 85553994
+                        except:
+                            thumbnail_image = product_option['thumbnailImage']  # {"__ref": "Image:97076697"}
+                            __ref_thumbnail = thumbnail_image['__ref']
+                            # 获取属性image_id
+                            image_id = apollo_state[__ref_thumbnail]['id']  # 85553994
+
+                        # 组装image_name
+                        image_name = '+'.join(value_name.split(' '))
+                        # 拼装image_url
+                        image_id_4_digit = str(image_id)[:4]
+                        image_url = 'https://secure.img1-fg.wfcdn.com/im/{digit_8}/scale-w88%5Ecompr-r85/{image_id_4_digit}/{image_id}/{image_name}.jpg'.format(
+                            digit_8=NumberHandler().create_8_digit(), image_id_4_digit=image_id_4_digit,
+                            image_id=image_id,
+                            image_name=image_name)
+
+                        item_value = {}
+                        item_value['value'] = image_url
+                        item_value['price'] = 0
+                        item_value['type'] = 2
+                        item_value['tips'] = value_name
+                        item_values.append(item_value)
+
+                item_option['main'] = 1  # 是否为主规格, 0：子规格 1：主规格
+                item_option['field'] = name  # 规格名称
+                item_option['type'] = category_id
+                item_option['values'] = item_values
+                item_options.append(item_option)
+
+        except Exception as error:
+            self.log.error(error)
+        finally:
+            return item_options
+
+    # 商品定制化参数：goodsOptions
+    @property
+    def parse_options(self) -> list:
+        options = []
+        parse_type = 1  # 解析类型1：从props中提取数据
+        try:
+            # 显示数据
+            apollo_state = self.entry_data['application']['__APOLLO_STATE__']
+            sku = self.entry_data['application']['props']['sku']  # W003221177
+            product_name = "Product:{}".format(sku)  # Product:W003221177
+
+            try:
+                if apollo_state[product_name]['sku'] == sku:
+                    parse_type = 2  # 解析类型2：从apollo中提取数据
+            except:
+                pass
+
+            # 解析类型1：从props中提取数据
+            if parse_type == 1:
+                options = self.parse_options_props
+            # 解析类型2：从apollo中提取数据
+            elif parse_type == 2:
+                options = self.parse_options_apollo
+            else:
+                print("暂时未遇到该种类型数据，请联系爬虫工程师添加新的解析规则!")
+
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return options
+
+    # 商品多规格参数: skuList
+    @property
+    def parse_sku_list(self) -> list:
+        data = []
+        try:
+            options = self.parse_options
+            for option in options:
+                item = {}
+                name = option['field']
+                values = []
+                if option['type'] == 1:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 2:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['tips']
+                        item_value['skuPropertyImagePath'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 3:
+                    pass
+
+                elif option['type'] == 4:
+                    pass
+                else:
+                    pass
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    def parse_comment(self, data: dict) -> list:
+        comments = []
+        try:
+            reviews = data['data']['product']['customerReviews']['reviews']
+
+            for review in reviews:
+                comment = {}
+                try:
+                    comment['name'] = review['reviewerName']
+                    if len(comment['name']) > NICK_WORD_MAX:
+                        comment['name'] = ''
+                except:
+                    comment['name'] = ''
+
+                try:
+                    comment['comment'] = review['productComments']
+                    if len(comment['comment']) > COMMENT_WORD_MAX:
+                        comment['comment'] = ''
+                except:
+                    comment['comment'] = ''
+
+                try:
+                    comment['country'] = review['reviewerLocation']
+                    date = time.strptime(review['date'], '%m/%d/%Y')
+                    timestamp = int(time.mktime(date))
+                    comment['commentTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
+                except:
+                    comment['country'] = ''
+                    comment['commentTime'] = '2021-01-01 00:00:00'
+
+                try:
+                    resource = []
+                    customer_photos = review['customerPhotos']
+                    for customer_photo in customer_photos:
+                        item = {}
+                        item['url'] = customer_photo['src']
+                        item['type'] = 1
+                        resource.append(item)
+                    comment['commentResourceList'] = resource
+                except:
+                    comment['commentResourceList'] = []
+
+                try:
+                    comment['star'] = str(int(int(review['ratingStars']) / 2))
+                except:
+                    comment['star'] = '5'
+
+                comment['reply'] = None
+                comment['status'] = 0  # 状态 0失效  1有效
+                comment['type'] = 1  # 评论类型 0 自评  1用户评论
+                if comment['name'] != '' and comment['comment'] != '':
+                    comments.append(comment)
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            # print("comments:", comments)
             return comments
 
 
