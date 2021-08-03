@@ -30,13 +30,15 @@ if __name__ == '__main__':
     platform = 'etsy'
     url = 'https://www.etsy.com/listing/929635861/set-of-fully-dry-wood-slices-wood-slices'
     # amazon
-    # total_comment = 4201
-    # platform = 'amazon'
-    # url = 'https://www.amazon.com/PajamaJeans-Womens-Bootcut-Stretch-Bluestone/dp/B079K37FH1'
+    total_comment = 4201
+    platform = 'amazon'
+    url = 'https://www.amazon.com/PajamaJeans-Womens-Bootcut-Stretch-Bluestone/dp/B079K37FH1'
     # wayfair
-    # total_comment = 15566
-    # platform = 'wayfair'
-    # url = 'https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w005759070.html'
+    total_comment = 15566
+    platform = 'wayfair'
+    url = 'https://www.wayfair.com/furniture/pdp/andover-mills-leni-335-wide-manual-standard-recliner-w005759070.html'
+    total_comment = 7881
+    url = 'https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html'
 
     comment = {
         'platform': platform,

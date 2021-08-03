@@ -1,3 +1,4 @@
 2021-08-02 13:43:35,887 wayfair1.py[line:147] ERROR 'Wayfair1' object has no attribute 'pw'
 2021-08-02 13:51:32,107 wayfair.py[line:545] INFO Fetching:https://www.wayfair.com/furniture/pdp/hashtag-home-askerby-2675-wide-manual-club-recliner-w001468363.html, Source:1
 2021-08-02 13:51:35,322 wayfair.py[line:427] ERROR 'method' object is not subscriptable
+2021-08-03 11:33:49,429 wayfair.py[line:68] ERROR 'HttpHelper' object has no attribute 'json'

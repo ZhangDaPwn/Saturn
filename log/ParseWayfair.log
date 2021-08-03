@@ -17,3 +17,6 @@
 2021-08-02 14:00:48,639 parse_helper.py[line:1154] ERROR list index out of range
 2021-08-02 14:01:50,833 parse_helper.py[line:1154] ERROR list index out of range
 2021-08-02 14:07:54,318 parse_helper.py[line:1154] ERROR list index out of range
+2021-08-03 11:33:48,855 parse_helper.py[line:1078] ERROR list index out of range
+2021-08-03 11:33:49,429 parse_helper.py[line:1447] ERROR 'data'
+2021-08-03 11:36:16,116 parse_helper.py[line:1078] ERROR list index out of range

@@ -185,6 +185,10 @@ class HttpHelper(object):
         return self.response.text
 
     @property
+    def json(self) -> str:
+        return self.response.json()
+
+    @property
     def content(self) -> str:
         return self.response.content.decode('utf-8')
 

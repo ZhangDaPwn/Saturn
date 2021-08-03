@@ -6,6 +6,8 @@
 # @Software : PyCharm
 import random
 import json
+import time
+
 from helper.http_helper import HttpHelper
 from handler.log_handler import LogHandler
 from utils.ua import ua_pc, ua_android
@@ -63,7 +65,7 @@ class Wayfair(object):
             }
 
             comments_info = HttpHelper().post(url=self.review_url, header=header, params=self.hash,
-                                              data=json.dumps(data)).json()
+                                              data=json.dumps(data)).json
         except Exception as e:
             self.log.error(e)
         finally:
@@ -146,6 +148,7 @@ class Wayfair(object):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     # url = 'https://www.wayfair.com/furniture/pdp/andover-mills-duquette-2-piece-configurable-living-room-set-w003241867.html'  # 单属性
     # url = 'https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html'  # 一种图片属性
     # url = 'https://www.wayfair.com/baby-kids/pdp/abdiel-platform-standard-bed-w004763304.html'  # 两种属性，全是图片
@@ -160,9 +163,18 @@ if __name__ == '__main__':
     # url = 'https://www.wayfair.com/kitchen-tabletop/pdp/cuisinart-11-piece-aluminum-non-stick-cookware-set-cui3602.html?piid=23542782'
     url = 'https://www.wayfair.com/furniture/pdp/sand-stable-bridget-hall-tree-with-shoe-storage-w003044752.html'
 
+    total_comment = 7881
+    platform = 'wayfair'
+    url = 'https://www.wayfair.com/baby-kids/pdp/viv-rae-griffin-glider-and-ottoman-vvre4889.html'
+
     source = 1
-    goods = 1
+    goods = 0
     comment = 1
     data = Wayfair().main(url=url, source=source, goods=goods, comment=comment)
     # print(data)
     print(json.dumps(data, indent=2, ensure_ascii=False))
+
+    pic_num = 0
+    for item in data['goodsComments']:
+        pic_num += len(item['commentResourceList'])
+    print("爬取平台：{}，商品总评论数：{}，爬取页数：{}， 有效评论数量：{}，图片数量：{}，耗时：{}".format(platform, total_comment, COMMENT_PAGE_MAX, len(data['goodsComments']), pic_num, time.time() - start_time))
