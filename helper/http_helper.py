@@ -51,7 +51,7 @@ class HttpHelper(object):
             headers.update(header)
         while True:
             try:
-                if not params:
+                if params:
                     self.response = requests.get(url=url, headers=headers, params=params, timeout=timeout, verify=False,
                                                  **kwargs)
                 else:

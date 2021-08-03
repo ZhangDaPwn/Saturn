@@ -44,3 +44,110 @@
 2021-08-03 10:16:49,162 parse_helper.py[line:1650] ERROR string indices must be integers
 2021-08-03 10:24:03,064 parse_helper.py[line:1485] ERROR list index out of range
 2021-08-03 10:24:04,333 parse_helper.py[line:1611] ERROR 'visit'
+2021-08-03 15:29:10,678 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:29:12,275 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:31:15,792 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:31:16,541 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:31:17,098 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:31:17,642 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:31:18,173 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:31:18,691 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:32:10,718 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:32:11,756 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:32:12,300 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:32:12,845 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:34:33,135 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:34:33,883 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:34:34,422 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:34:34,963 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:34:35,572 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:35:39,255 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:35:40,068 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:35:40,632 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:35:41,266 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:35:41,797 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:35:42,406 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:39:04,420 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:39:05,294 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:39:05,892 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:39:06,520 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:39:07,124 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:39:07,663 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:39:39,530 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:39:40,388 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:39:40,995 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:39:41,519 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:39:42,037 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:39:42,568 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:43:25,396 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:43:26,138 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:43:26,664 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:43:27,184 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:43:27,733 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:43:28,289 parse_helper.py[line:1749] ERROR string indices must be integers
+2021-08-03 15:45:37,888 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:45:38,654 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:45:39,261 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:45:39,802 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:46:50,853 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:47:12,196 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:48:16,356 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:48:17,380 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:48:17,944 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:48:18,535 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:51:43,296 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:53:15,004 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:54:08,564 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:54:20,770 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 15:54:21,358 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:21,883 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:22,462 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:23,031 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:23,549 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:24,080 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:54:24,600 parse_helper.py[line:1749] ERROR 'data'
+2021-08-03 15:56:34,857 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:00:41,367 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:00:42,478 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:02:45,999 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:02:46,771 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:04:43,074 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:04:44,355 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:07:04,624 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:07:05,806 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:12:51,638 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:12:52,735 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:18:14,401 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:18:15,587 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:20:30,369 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:20:31,310 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:20:31,313 parse_helper.py[line:1752] ERROR pop from empty list
+2021-08-03 16:21:42,403 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:21:44,311 parse_helper.py[line:1622] ERROR 'visit'
+2021-08-03 16:29:58,150 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:29:59,272 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:30:28,223 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:30:29,269 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:30:29,271 parse_helper.py[line:1752] ERROR pop from empty list
+2021-08-03 16:32:10,355 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 16:32:11,819 parse_helper.py[line:1622] ERROR 'visit'
+2021-08-03 17:07:30,365 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:07:31,706 parse_helper.py[line:1622] ERROR 'visit'
+2021-08-03 17:08:14,512 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:08:15,642 parse_helper.py[line:1622] ERROR 'visit'
+2021-08-03 17:08:57,314 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:08:58,114 parse_helper.py[line:1622] ERROR 'visit'
+2021-08-03 17:11:02,174 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:11:03,511 parse_helper.py[line:1622] ERROR Object of type datetime is not JSON serializable
+2021-08-03 17:11:42,503 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:11:43,456 parse_helper.py[line:1622] ERROR Object of type datetime is not JSON serializable
+2021-08-03 17:12:22,301 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:12:23,131 parse_helper.py[line:1622] ERROR Object of type datetime is not JSON serializable
+2021-08-03 17:13:46,230 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:13:47,121 parse_helper.py[line:1624] ERROR 'visit'
+2021-08-03 17:14:53,810 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:14:54,657 parse_helper.py[line:1625] ERROR 'visit'
+2021-08-03 17:16:15,644 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:16:16,652 parse_helper.py[line:1625] ERROR 'visit'
+2021-08-03 17:17:59,616 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-03 17:20:24,843 parse_helper.py[line:1496] ERROR list index out of range

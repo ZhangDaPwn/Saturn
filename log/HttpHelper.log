@@ -1,0 +1,21 @@
+2021-08-03 15:46:51,676 http_helper.py[line:62] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:46:51,678 http_helper.py[line:68] INFO get retry 5 second after
+2021-08-03 15:46:57,450 http_helper.py[line:62] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:46:57,450 http_helper.py[line:68] INFO get retry 5 second after
+2021-08-03 15:47:12,881 http_helper.py[line:62] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:47:12,881 http_helper.py[line:68] INFO get retry 5 second after
+2021-08-03 15:47:18,608 http_helper.py[line:62] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:47:18,608 http_helper.py[line:68] INFO get retry 5 second after
+2021-08-03 15:51:44,014 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:51:44,014 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:51:49,855 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:51:49,855 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:53:15,718 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:53:15,718 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:53:21,528 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:53:21,529 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:54:09,283 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:54:09,284 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:54:14,993 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)
+2021-08-03 15:54:14,993 http_helper.py[line:69] INFO get retry 5 second after
+2021-08-03 15:54:20,705 http_helper.py[line:63] ERROR get: https://www.swimsuitfor.com/collections/%F0%9F%8E%83halloween error: Expecting value: line 1 column 1 (char 0)

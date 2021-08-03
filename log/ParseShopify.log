@@ -1,0 +1,23 @@
+2021-08-03 18:14:21,249 parse_helper.py[line:1827] ERROR list indices must be integers or slices, not str
+2021-08-03 18:14:21,250 parse_helper.py[line:1855] ERROR 'goods'
+2021-08-03 18:15:43,631 parse_helper.py[line:1827] ERROR list indices must be integers or slices, not str
+2021-08-03 18:15:43,632 parse_helper.py[line:1855] ERROR 'goods'
+2021-08-03 18:15:52,973 parse_helper.py[line:1827] ERROR list indices must be integers or slices, not str
+2021-08-03 18:15:52,973 parse_helper.py[line:1855] ERROR 'goods'
+2021-08-03 18:16:03,745 parse_helper.py[line:1827] ERROR list indices must be integers or slices, not str
+2021-08-03 18:16:03,745 parse_helper.py[line:1855] ERROR 'goods'
+2021-08-03 18:16:36,271 parse_helper.py[line:1827] ERROR list indices must be integers or slices, not str
+2021-08-03 18:16:36,272 parse_helper.py[line:1855] ERROR 'goods'
+2021-08-03 18:17:19,199 parse_helper.py[line:1828] ERROR list indices must be integers or slices, not str
+2021-08-03 18:17:19,199 parse_helper.py[line:1856] ERROR 'goods'
+2021-08-03 18:18:40,831 parse_helper.py[line:1828] ERROR 'regularPrice'
+2021-08-03 18:18:40,832 parse_helper.py[line:1856] ERROR 'goods'
+2021-08-03 18:19:46,879 parse_helper.py[line:1856] ERROR 'price'
+2021-08-03 18:20:34,988 parse_helper.py[line:1828] ERROR list indices must be integers or slices, not str
+2021-08-03 18:20:34,989 parse_helper.py[line:1856] ERROR 'goods'
+2021-08-03 18:22:42,094 parse_helper.py[line:1832] ERROR list indices must be integers or slices, not str
+2021-08-03 18:22:42,095 parse_helper.py[line:1860] ERROR 'goods'
+2021-08-03 18:23:54,789 parse_helper.py[line:1828] ERROR list indices must be integers or slices, not str
+2021-08-03 18:23:54,789 parse_helper.py[line:1856] ERROR 'goods'
+2021-08-03 18:37:13,532 parse_helper.py[line:1929] ERROR string indices must be integers
+2021-08-03 18:37:46,459 parse_helper.py[line:1930] ERROR string indices must be integers

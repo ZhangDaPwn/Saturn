@@ -18,8 +18,8 @@ import json
 import re
 import random
 import time
-
 import demjson
+from datetime import datetime
 from html import unescape
 from lxml import etree
 from urllib.parse import urljoin
@@ -741,7 +741,7 @@ class ParseAmazon(object):
             data['goodsName'] = goods['name']
             data['mainImg'] = goods['image']
             data['brief'] = goods['brief']
-            data['description'] = goods['description'].replace('\n', '<br>')
+            data['description'] = goods['description']
             data['commentScore'] = goods['rating']
             data['defaultPrice'] = goods['price']
             data['shelfTime'] = goods['shelfTime']
@@ -1466,8 +1466,19 @@ class ParseShoplazza(object):
     def parse_domain(self) -> str:
         domain = ''
         try:
-            pattern = re.compile(r'(.*?)/products/', re.DOTALL)
-            domain = re.findall(pattern, self.url)[0]
+            # 从商品url中提取domain
+            try:
+                pattern = re.compile(r'(.*?)/products/', re.DOTALL)
+                domain = re.findall(pattern, self.url)[0]
+            except:
+                pass
+            # 从商品列表url中提取domain
+            if domain == '':
+                try:
+                    pattern = re.compile(r'(.*?)/collections', re.DOTALL)
+                    domain = re.findall(pattern, self.url)[0]
+                except:
+                    pass
         except Exception as e:
             self.log.error(str(e))
         finally:
@@ -1570,11 +1581,13 @@ class ParseShoplazza(object):
             goods['rating'] = random.randint(3, 5)
             goods['regularPrice'] = product['price_max']
             goods['price'] = product['price']
-            goods['shelfTime'] = product['created_at']
-            goods['updateTime'] = product['updated_at']
+            goods['shelfTime'] = str(datetime.strptime(product['created_at'], "%Y-%m-%dT%H:%M:%SZ"))
+            goods['updateTime'] = str(datetime.strptime(product['updated_at'], "%Y-%m-%dT%H:%M:%SZ"))
             goods['purchaseMin'] = 1
             goods['purchaseMax'] = product['inventory_quantity']
             goods['sales'] = product['sales']
+            goods['visit'] = random.randint(1000, 5000)
+            goods['collection'] = random.randint(800, 1000)
 
             data['goods'] = goods
             data['id'] = goods['id']
@@ -1597,7 +1610,7 @@ class ParseShoplazza(object):
             data['goodsName'] = goods['name']
             data['mainImg'] = goods['image']
             data['brief'] = goods['brief']
-            data['description'] = goods['description'].replace('\n', '<br>')
+            data['description'] = goods['description']
             data['commentScore'] = goods['rating']
             data['defaultPrice'] = goods['price']
             data['shelfTime'] = goods['shelfTime']
@@ -1684,6 +1697,315 @@ class ParseShoplazza(object):
         except Exception as e:
             self.log.error(e)
         finally:
+            return data
+
+    # 提取商品列表翻页请求参数：类型一
+    @property
+    def parse_collection_attribute(self):
+        attribute = {}
+        try:
+            # 提取首页collectionData
+            try:
+                pattern = re.compile(r'collectionDetail\((.*?)\);', re.DOTALL)
+                data = demjson.decode(re.findall(pattern, self.text)[0])
+                attribute['collection_id'] = data['collection_id']
+                attribute['pages'] = int(data['pages'])
+                attribute['limit'] = int(data['limit'])
+            except:
+                pass
+            if attribute == {}:
+                try:
+                    pass
+                except:
+                    pass
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return attribute
+
+    # 提取商品列表翻页请求参数：类型二
+    @property
+    def parse_limit(self):
+        limit = 1
+        try:
+            try:
+                pattern = re.compile(r'params,extraParams,\{limit:(.*?),sort_by:sort_by,', re.DOTALL)
+                limit = int(re.findall(pattern, self.text)[0])
+            except:
+                pass
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return limit
+
+    @property
+    def parse_products_first_page(self) -> list:
+        products = []
+        try:
+            domain = self.parse_domain
+            # 提取首页所有商品url
+            pattern = re.compile(r'data-product-url="(.*?)"', re.DOTALL)
+            products_url = re.findall(pattern, self.text)
+            products_url.pop()
+            for product_url in products_url:
+                url = urljoin(domain, product_url)
+                products.append(url)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return products
+
+    # 提取商品链接：类型一
+    def parse_products(self, data: dict) -> list:
+        products = []
+        try:
+            domain = self.parse_domain
+            for product in data['data']['products']:
+                product_url = product['url']
+                product_url = urljoin(domain, product_url)
+                products.append(product_url)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return products
+
+    # 提取商品链接：类型二
+    def parse_products_2(self, text: str) -> list:
+        products = []
+        try:
+            domain = self.parse_domain
+            tree = etree.HTML(text)
+            products_url = tree.xpath('//div[@id="collection_products"]/div/a/@href')
+            for product_url in products_url:
+                product_url = urljoin(domain, product_url)
+                products.append(product_url)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return products
+
+
+class ParseShopify(object):
+    def __init__(self, data, url):
+        self.name = 'ParseShopify'
+        self.platform = 'shopify'
+        self.log = LogHandler(self.name)
+        self.ps = ParseString()
+        self.data = data
+        self.url = url
+
+    # 按照商品池参数规格提取商品数据
+    @property
+    def parse_goods_info(self) -> dict:
+        data = {}
+        try:
+            goods = {}
+            product = self.data['product']
+
+            goods['id'] = product['id']
+            goods['name'] = product['title']
+            goods['url'] = self.url
+            goods['image'] = product['image']['src']
+            goods['brief'] = ''
+            goods['description'] = product['body_html']
+            goods['rating'] = random.randint(3, 5)
+            variant = product['variants'][0]
+            goods['regularPrice'] = round(float(variant['price']), 2)
+            goods['price'] = goods['regularPrice']
+            # 需要转化时区
+            goods['shelfTime'] = str(datetime.strptime(variant['created_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
+            goods['updateTime'] = str(datetime.strptime(variant['updated_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
+            goods['purchaseMin'] = 1
+            goods['purchaseMax'] = 999
+            goods['sales'] = random.randint(200, 800)
+            goods['visit'] = random.randint(1000, 5000)
+            goods['collection'] = random.randint(800, 1000)
+
+            data['goods'] = goods
+            data['id'] = goods['id']
+            data['platform'] = self.platform
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            # print(json.dumps(data, indent=2, ensure_ascii=False))
+            return data
+
+    # 商品基础数据：goodsSpu
+    @property
+    def parse_goods_spu(self) -> dict:
+        data = {}
+        try:
+            info = self.parse_goods_info
+            goods = info['goods']
+            # 基础参数中提取数据部分
+            data['goodsNum'] = goods['id']
+            data['goodsName'] = goods['name']
+            data['mainImg'] = goods['image']
+            data['brief'] = goods['brief']
+            data['description'] = goods['description']
+            data['commentScore'] = goods['rating']
+            data['defaultPrice'] = goods['price']
+            data['shelfTime'] = goods['shelfTime']
+            data['updateTime'] = goods['updateTime']
+            data['purchaseMin'] = goods['purchaseMin']
+            data['purchaseMax'] = goods['purchaseMax']
+            data['sales'] = goods['sales']
+            data['visitNum'] = goods['visit']
+            data['collection'] = goods['collection']
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 商品图片数据：goodsResources：从html中解析
+    @property
+    def parse_goods_resources(self) -> list:
+        data = []
+        try:
+            for image in self.data['product']['images']:
+                item = {
+                    'type': 1,
+                    'url': image['src']
+                }
+                data.append(item)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 商品定制化参数：goodsOptions: 从context中筛选出数据
+    @property
+    def parse_options(self) -> list:
+        data = []
+        try:
+            options = self.data['product']['options']
+            for option in options:
+                item = {}
+                item['main'] = 1  # 是否为主规格, 0：子规格 1：主规格
+                item['field'] = option['name']  # 规格名称
+                item['type'] = 1  # 规格类型 1文本选项 2图片选项 3文本输入 4图片上传
+                item['values'] = [{'value': value, 'price': 0, 'type': 1, 'tips': ''} for value in option['values']]
+                data.append(item)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 商品多规格参数: skuList
+    @property
+    def parse_sku_list(self) -> list:
+        data = []
+        try:
+            options = self.parse_options
+            for option in options:
+                item = {}
+                name = option['field']
+                values = []
+                if option['type'] == 1:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 2:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['tips']
+                        item_value['skuPropertyImagePath'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 3:
+                    pass
+
+                elif option['type'] == 4:
+                    pass
+                else:
+                    pass
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    # 获取商品列表链接
+    @property
+    def parse_products(self):
+        products = []
+        try:
+            for product in self.data['products']:
+                path = ''
+                if 'product_id' in product:
+                    path = product['product_id']
+                elif 'handle' in product:
+                    path = product['handle']
+                product_url = self.url + '/products/' + path
+                products.append(product_url)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return products
+
+
+class ParseAliexpress(object):
+    def __init__(self, text, url):
+        self.name = 'ParseShopify'
+        self.platform = 'shopify'
+        self.log = LogHandler(self.name)
+        self.ps = ParseString()
+        self.text = text
+        self.url = url
+
+    # 提取商品基础数据
+    @property
+    def parse_base_data(self) -> dict:
+        data = {}
+        try:
+            pattern = re.compile(r'window\.runParams = \{(.*?)\};', re.DOTALL)
+            run_params_str = re.findall(pattern, self.text)[0]
+            data = demjson.decode('{' + run_params_str + '}')
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+
+    # 按照商品池参数规格提取商品数据
+    @property
+    def parse_goods_info(self) -> dict:
+        data = {}
+        try:
+            goods = {}
+            product = self.parse_base_data['product']
+
+            goods['id'] = product['id']
+            goods['name'] = product['title']
+            goods['url'] = self.url
+            goods['image'] = product['image']['src']
+            goods['brief'] = ''
+            goods['description'] = product['body_html']
+            goods['rating'] = random.randint(3, 5)
+            variant = product['variants'][0]
+            goods['regularPrice'] = round(float(variant['price']), 2)
+            goods['price'] = goods['regularPrice']
+            # 需要转化时区
+            goods['shelfTime'] = str(datetime.strptime(variant['created_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
+            goods['updateTime'] = str(datetime.strptime(variant['updated_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
+            goods['purchaseMin'] = 1
+            goods['purchaseMax'] = 999
+            goods['sales'] = random.randint(200, 800)
+            goods['visit'] = random.randint(1000, 5000)
+            goods['collection'] = random.randint(800, 1000)
+
+            data['goods'] = goods
+            data['id'] = goods['id']
+            data['platform'] = self.platform
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            # print(json.dumps(data, indent=2, ensure_ascii=False))
             return data
 
 
