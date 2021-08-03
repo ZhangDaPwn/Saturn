@@ -1,0 +1,46 @@
+2021-08-03 09:59:47,126 parse_helper.py[line:1484] ERROR list index out of range
+2021-08-03 09:59:48,659 parse_helper.py[line:1582] ERROR 'product'
+2021-08-03 09:59:48,659 parse_helper.py[line:1610] ERROR 'goods'
+2021-08-03 09:59:48,660 parse_helper.py[line:1627] ERROR 'product'
+2021-08-03 09:59:48,660 parse_helper.py[line:1645] ERROR 'product'
+2021-08-03 10:01:44,815 parse_helper.py[line:1486] ERROR list index out of range
+2021-08-03 10:01:46,062 parse_helper.py[line:1584] ERROR 'product'
+2021-08-03 10:01:46,062 parse_helper.py[line:1612] ERROR 'goods'
+2021-08-03 10:01:46,063 parse_helper.py[line:1629] ERROR 'product'
+2021-08-03 10:01:46,063 parse_helper.py[line:1647] ERROR 'product'
+2021-08-03 10:03:07,850 parse_helper.py[line:1486] ERROR list index out of range
+2021-08-03 10:03:08,647 parse_helper.py[line:1584] ERROR 'product'
+2021-08-03 10:03:08,648 parse_helper.py[line:1612] ERROR 'goods'
+2021-08-03 10:03:08,648 parse_helper.py[line:1629] ERROR 'product'
+2021-08-03 10:03:08,648 parse_helper.py[line:1647] ERROR 'product'
+2021-08-03 10:07:51,017 parse_helper.py[line:1486] ERROR list index out of range
+2021-08-03 10:07:52,783 parse_helper.py[line:1486] ERROR cannot use a string pattern on a bytes-like object
+2021-08-03 10:07:52,784 parse_helper.py[line:1584] ERROR 'product'
+2021-08-03 10:07:52,784 parse_helper.py[line:1612] ERROR 'goods'
+2021-08-03 10:07:52,784 parse_helper.py[line:1629] ERROR 'product'
+2021-08-03 10:07:52,784 parse_helper.py[line:1647] ERROR 'product'
+2021-08-03 10:08:51,584 parse_helper.py[line:1486] ERROR list index out of range
+2021-08-03 10:08:52,760 parse_helper.py[line:1486] ERROR cannot use a string pattern on a bytes-like object
+2021-08-03 10:08:52,761 parse_helper.py[line:1584] ERROR 'product'
+2021-08-03 10:08:52,761 parse_helper.py[line:1612] ERROR 'goods'
+2021-08-03 10:08:52,761 parse_helper.py[line:1629] ERROR 'product'
+2021-08-03 10:08:52,761 parse_helper.py[line:1647] ERROR 'product'
+2021-08-03 10:10:19,101 parse_helper.py[line:1488] ERROR list index out of range
+2021-08-03 10:10:19,903 parse_helper.py[line:1488] ERROR cannot use a string pattern on a bytes-like object
+2021-08-03 10:10:19,903 parse_helper.py[line:1586] ERROR 'product'
+2021-08-03 10:10:19,903 parse_helper.py[line:1614] ERROR 'goods'
+2021-08-03 10:10:19,904 parse_helper.py[line:1631] ERROR 'product'
+2021-08-03 10:10:19,904 parse_helper.py[line:1649] ERROR 'product'
+2021-08-03 10:12:00,831 parse_helper.py[line:1489] ERROR list index out of range
+2021-08-03 10:12:02,232 parse_helper.py[line:1489] ERROR cannot use a string pattern on a bytes-like object
+2021-08-03 10:12:02,232 parse_helper.py[line:1587] ERROR 'product'
+2021-08-03 10:12:02,233 parse_helper.py[line:1615] ERROR 'goods'
+2021-08-03 10:12:02,233 parse_helper.py[line:1632] ERROR 'product'
+2021-08-03 10:12:02,233 parse_helper.py[line:1650] ERROR 'product'
+2021-08-03 10:16:47,792 parse_helper.py[line:1489] ERROR list index out of range
+2021-08-03 10:16:49,162 parse_helper.py[line:1587] ERROR string indices must be integers
+2021-08-03 10:16:49,162 parse_helper.py[line:1615] ERROR 'goods'
+2021-08-03 10:16:49,162 parse_helper.py[line:1632] ERROR string indices must be integers
+2021-08-03 10:16:49,162 parse_helper.py[line:1650] ERROR string indices must be integers
+2021-08-03 10:24:03,064 parse_helper.py[line:1485] ERROR list index out of range
+2021-08-03 10:24:04,333 parse_helper.py[line:1611] ERROR 'visit'

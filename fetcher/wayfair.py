@@ -4,7 +4,6 @@
 # @Author   : dapwn
 # @File     : wayfair.py
 # @Software : PyCharm
-
 import random
 import json
 from helper.http_helper import HttpHelper

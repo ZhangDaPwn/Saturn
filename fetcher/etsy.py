@@ -22,6 +22,7 @@ from requests import Response
 from handler.log_handler import LogHandler
 from helper.parse_helper import ParseEtsy, CovertData
 from utils.ua import ua_pc
+from settings import COMMENT_NUMBER_MAX
 
 
 class Etsy(object):
@@ -29,10 +30,6 @@ class Etsy(object):
         self.name = 'Etsy'
         self.log = LogHandler(self.name)
         self.ua = random.choice(ua_pc)
-        self.comment_num_max = 200  # 评论爬取上限
-        self.comment_page_max = 50  # 评论爬取页数上限
-        self.nick_word_max = 100  # 评论用户名字数上限
-        self.comment_word_max = 3000  # 单条评论字数上限
         self.tab_item = 'same_listing_reviews'  # 商品tab
         self.tab_shop = 'shop_reviews'  # 店铺tab
         self.set_url = 'https://www.etsy.com/api/v3/ajax/member/locale-preferences'  # 设置货币/地区/语言的链接
@@ -128,7 +125,7 @@ class Etsy(object):
                     resp_json = self.post(url=self.review_url, header=header, data=data).json()
                     comment = pe.parse_comment(data=resp_json)
                     comments.extend(comment)
-                    if len(comments) >= self.comment_num_max:
+                    if len(comments) >= COMMENT_NUMBER_MAX:
                         break
         except Exception as e:
             self.log.error(str(e))

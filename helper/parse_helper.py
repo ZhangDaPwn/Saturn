@@ -35,82 +35,6 @@ class ParseEtsy(object):
         self.platform = 'etsy'
         self.log = LogHandler(self.name)
         self.ps = ParseString()
-        self.dh = DateHandler()
-        self.regions = [
-            "AU",
-            "CA",
-            "FR",
-            "DE",
-            "GR",
-            "IE",
-            "IT",
-            "JP",
-            "NZ",
-            "PL",
-            "PT",
-            "RU",
-            "ES",
-            "NL",
-            "GB",
-            "US", ]
-        self.languages = [
-            "de",
-            "en-GB",
-            "en-US",
-            "es",
-            "fr",
-            "it",
-            "ja",
-            "nl",
-            "pl",
-            "pt",
-            "ru",
-        ]
-        self.currencies = [
-            "USD",
-            "CAD",
-            "EUR",
-            "GBP",
-            "AUD",
-            "JPY",
-            "CNY",
-            "CZK",
-            "DKK",
-            "HKD",
-            "HUF",
-            "INR",
-            "IDR",
-            "ILS",
-            "MYR",
-            "MXN",
-            "MAD",
-            "NZD",
-            "NOK",
-            "PHP",
-            "SGD",
-            "VND",
-            "ZAR",
-            "SEK",
-            "CHF",
-            "THB",
-            "TWD",
-            "TRY",
-            "PLN",
-            "BRL", ]
-        self.symbols = ["$",
-                        "€",
-                        "£",
-                        "¥",
-                        "Kč",
-                        "₹",
-                        "₪",
-                        "₱",
-                        "₫",
-                        "฿",
-                        "NT$",
-                        "₺",
-                        "zł",
-                        "R$"]
         self.text = text
         self.base_data = self.parse_base_data
         self.context = self.parse_context
@@ -497,9 +421,10 @@ class ParseEtsy(object):
                     item['star'] = '5'
 
                 try:
-                    item['commentTime'] = self.dh.bdY_to_YmdHMS(
-                        self.ps.delete_useless_string(
-                            div.xpath('.//p[@class="wt-text-caption wt-text-gray"]/text()')[1]))
+                    date = self.ps.delete_useless_string(
+                        div.xpath('.//p[@class="wt-text-caption wt-text-gray"]/text()')[1])
+                    timestamp = int(time.mktime(time.strptime(date, '%b %d, %Y')))
+                    item['commentTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
                 except:
                     item['commentTime'] = ''
 
@@ -521,7 +446,6 @@ class ParseAmazon(object):
         self.domain = 'https://www.amazon.com'
         self.log = LogHandler(self.name)
         self.ps = ParseString()
-        self.dh = DateHandler()
         self.text = text
         self.tree = etree.HTML(self.text)
         self.btf = self.parse_btf
@@ -1045,7 +969,7 @@ class ParseAmazon(object):
                         item['url'] = pic
                         item['type'] = 1
                         resource.append(item)
-                    comment['commentResourceList'] = resource
+                    comment['commentResourceList'] = resource[:COMMENT_PAGE_MAX]
                     # print("commentResourceList:", resource)
                 except:
                     comment['commentResourceList'] = []
@@ -1505,7 +1429,7 @@ class ParseWayfair(object):
                         item['url'] = customer_photo['src']
                         item['type'] = 1
                         resource.append(item)
-                    comment['commentResourceList'] = resource
+                    comment['commentResourceList'] = resource[:COMMENT_PAGE_MAX]
                 except:
                     comment['commentResourceList'] = []
 
@@ -1524,6 +1448,243 @@ class ParseWayfair(object):
         finally:
             # print("comments:", comments)
             return comments
+
+
+class ParseShoplazza(object):
+    def __init__(self, text, url):
+        self.name = 'ParseShoplazza'
+        self.platform = 'shoplazza'
+        self.log = LogHandler(self.name)
+        self.ps = ParseString()
+        self.text = text
+        self.url = url
+        self.tree = etree.HTML(self.text)
+        self.base_data = self.parse_data
+        self.cdn = 'https://cdn.shoplazza.com'
+
+    @property
+    def parse_domain(self) -> str:
+        domain = ''
+        try:
+            pattern = re.compile(r'(.*?)/products/', re.DOTALL)
+            domain = re.findall(pattern, self.url)[0]
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return domain
+
+    # 解析商品详情数据
+    @property
+    def parse_data(self) -> dict:
+        data = {}
+        try:
+            pattern = re.compile(r'product_detail\((.*?)}\);', re.DOTALL)
+            data = str(re.findall(pattern, self.text)[0]) + '}'
+            data = demjson.decode(data)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 拼装img中的data-srcset值和srcset值
+    def make_data_srcset(self, data_src: str, width: str) -> str:
+        data_srcset = ''
+        try:
+            nums = [
+                48, 180, 360, 540, 720, 900, 1024,
+                1280, 1366, 1440, 1536, 1600, 1920,
+                2056, 2560, 2732, 2880, 3072, 3200, 3840
+            ]
+            nums.sort(reverse=False)
+            for num in nums:
+                if num > int(width):
+                    width = str(num)
+                    break
+            pic_url = data_src.replace('{width}', width)
+            for size in nums:
+                data_srcset += pic_url + ' ' + str(size) + 'w, '
+        except:
+            pass
+        finally:
+            return data_srcset
+
+    def make_description_html(self, html):
+        try:
+            imgs = html.xpath('.//img')
+            for img in imgs:
+                try:
+                    width = img.attrib.get('width')
+                    data_src = img.attrib.get('data-src')
+                    # print("data_src: ", data_src, type(data_src))
+                    if '.gif' in data_src:
+                        img.attrib['src'] = data_src
+                    else:
+                        data_srcset = self.make_data_srcset(data_src=data_src, width=width)
+                        # print("data_srcset: ", data_srcset)
+                        img.attrib['data-srcset'] = data_srcset
+                        img.attrib['srcset'] = data_srcset
+                        img.attrib.pop('data-src')
+                except:
+                    pass
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return html
+
+    @property
+    def parse_description(self) -> str:
+        description = ''
+        try:
+            description_html = self.tree.xpath('//div[contains(@class, "product-info__desc-tab product-info__desc")]')[
+                0]
+            # 选择出label节点，并删除
+            try:
+                label_html = description_html.xpath('./div[@class="product-info__label_tabs"]')[0]
+                description_html.remove(label_html)
+            except:
+                pass
+
+            # 增添一个img_url加密部分，修改时间2021/6/17，如需关闭，注释这行就行
+            description_html = self.make_description_html(description_html)
+            description = self.ps.delete_useless_string(etree.tostring(description_html).decode('utf-8'))
+            # print("description:", description)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return description
+
+    # 按照商品池参数规格提取商品数据
+    @property
+    def parse_goods_info(self) -> dict:
+        data = {}
+        try:
+            goods = {}
+            product = self.base_data['product']
+
+            goods['id'] = product['id']
+            goods['name'] = product['title']
+            goods['url'] = urljoin(self.parse_domain, product['url'])
+            goods['image'] = urljoin('https', product['image']['src'])
+            goods['brief'] = ''
+            goods['description'] = self.parse_description
+            goods['rating'] = random.randint(3, 5)
+            goods['regularPrice'] = product['price_max']
+            goods['price'] = product['price']
+            goods['shelfTime'] = product['created_at']
+            goods['updateTime'] = product['updated_at']
+            goods['purchaseMin'] = 1
+            goods['purchaseMax'] = product['inventory_quantity']
+            goods['sales'] = product['sales']
+
+            data['goods'] = goods
+            data['id'] = goods['id']
+            data['platform'] = self.platform
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            # print(json.dumps(data, indent=2, ensure_ascii=False))
+            return data
+
+    # 商品基础数据：goodsSpu
+    @property
+    def parse_goods_spu(self) -> dict:
+        data = {}
+        try:
+            info = self.parse_goods_info
+            goods = info['goods']
+            # 基础参数中提取数据部分
+            data['goodsNum'] = goods['id']
+            data['goodsName'] = goods['name']
+            data['mainImg'] = goods['image']
+            data['brief'] = goods['brief']
+            data['description'] = goods['description'].replace('\n', '<br>')
+            data['commentScore'] = goods['rating']
+            data['defaultPrice'] = goods['price']
+            data['shelfTime'] = goods['shelfTime']
+            data['updateTime'] = goods['updateTime']
+            data['purchaseMin'] = goods['purchaseMin']
+            data['purchaseMax'] = goods['purchaseMax']
+            data['sales'] = goods['sales']
+            data['visitNum'] = goods['visit']
+            data['collection'] = goods['collection']
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 商品图片及视频数据：goodsResources
+    @property
+    def parse_goods_resources(self) -> list:
+        data = []
+        try:
+            images = self.base_data['product']['images']
+            for image in images:
+                item = {
+                    'type': 1,
+                    'url': urljoin(self.cdn, image['src']) if 'src' in image else ''
+                }
+                data.append(item)
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    # 商品定制化参数：goodsOptions
+    @property
+    def parse_options(self) -> list:
+        data = []
+        try:
+            options = self.base_data['product']['options']
+            for option in options:
+                item = {}
+                item['main'] = 1
+                item['field'] = option['name']
+                item['type'] = 1
+                item['values'] = [{'value': value, 'price': 0, 'type': 1, 'tips': ''} for value in option['values']]
+                data.append(item)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return data
+
+    # 商品多规格参数: skuList
+    @property
+    def parse_sku_list(self) -> list:
+        data = []
+        try:
+            options = self.parse_options
+            for option in options:
+                item = {}
+                name = option['field']
+                values = []
+                if option['type'] == 1:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 2:
+                    for value in option['values']:
+                        item_value = {}
+                        item_value['propertyValueDisplayName'] = value['tips']
+                        item_value['skuPropertyImagePath'] = value['value']
+                        values.append(item_value)
+                    item['skuPropertyName'] = name
+                    item['skuPropertyValues'] = values
+                    data.append(item)
+                elif option['type'] == 3:
+                    pass
+
+                elif option['type'] == 4:
+                    pass
+                else:
+                    pass
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
 
 
 class ParseString(object):
@@ -1545,168 +1706,9 @@ class NumberHandler(object):
         # return "".join(random.sample(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], 8))
 
 
-class DateHandler(object):
-    def __init__(self):
-        pass
-
-    def bdY_to_YmdHMS(self, date: str) -> str:
-        newdate = time.strptime(date, '%b %d, %Y')
-        timestamp = int(time.mktime(newdate))
-        time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
-        return time_str
-
-
 class FileHandler(object):
     def __init__(self):
-        self.country = {'Australia': '61', 'Canada': '79', 'France': '103', 'Germany': '91', 'Greece': '112',
-                        'Ireland': '123', 'Italy': '128', 'Japan': '131', 'New Zealand': '167', 'Poland': '174',
-                        'Portugal': '177', 'Russia': '181', 'Spain': '99', 'The Netherlands': '164',
-                        'United Kingdom': '105', 'United States': '209', 'Afghanistan': '55', 'Albania': '57',
-                        'Algeria': '95', 'American Samoa': '250', 'Andorra': '228', 'Angola': '56', 'Anguilla': '251',
-                        'Antigua and Barbuda': '252', 'Argentina': '59', 'Armenia': '60', 'Aruba': '253',
-                        'Austria': '62', 'Azerbaijan': '63', 'Bahamas': '229', 'Bahrain': '232', 'Bangladesh': '68',
-                        'Barbados': '237', 'Belarus': '71', 'Belgium': '65', 'Belize': '72', 'Benin': '66',
-                        'Bermuda': '225', 'Bhutan': '76', 'Bolivia': '73', 'Bosnia and Herzegovina': '70',
-                        'Botswana': '77', 'Bouvet Island': '254', 'Brazil': '74',
-                        'British Indian Ocean Territory': '255', 'British Virgin Islands': '231', 'Brunei': '75',
-                        'Bulgaria': '69', 'Burkina Faso': '67', 'Burundi': '64', 'Cambodia': '135', 'Cameroon': '84',
-                        'Cape Verde': '222', 'Cayman Islands': '247', 'Central African Republic': '78', 'Chad': '196',
-                        'Chile': '81', 'China': '82', 'Christmas Island': '257', 'Cocos (Keeling) Islands': '258',
-                        'Colombia': '86', 'Comoros': '259', 'Congo, Republic of': '85', 'Cook Islands': '260',
-                        'Costa Rica': '87', 'Croatia': '118', 'Curaçao': '338', 'Cyprus': '89', 'Czech Republic': '90',
-                        'Denmark': '93', 'Djibouti': '92', 'Dominica': '261', 'Dominican Republic': '94',
-                        'Ecuador': '96', 'Egypt': '97', 'El Salvador': '187', 'Equatorial Guinea': '111',
-                        'Eritrea': '98', 'Estonia': '100', 'Ethiopia': '101', 'Falkland Islands (Malvinas)': '262',
-                        'Faroe Islands': '241', 'Fiji': '234', 'Finland': '102', 'French Guiana': '115',
-                        'French Polynesia': '263', 'French Southern Territories': '264', 'Gabon': '104',
-                        'Gambia': '109', 'Georgia': '106', 'Ghana': '107', 'Gibraltar': '226', 'Greenland': '113',
-                        'Grenada': '245', 'Guadeloupe': '265', 'Guam': '266', 'Guatemala': '114', 'Guinea': '108',
-                        'Guinea-Bissau': '110', 'Guyana': '116', 'Haiti': '119',
-                        'Heard Island and McDonald Islands': '267', 'Holy See (Vatican City State)': '268',
-                        'Honduras': '117', 'Hong Kong': '219', 'Hungary': '120', 'Iceland': '126', 'India': '122',
-                        'Indonesia': '121', 'Iraq': '125', 'Isle of Man': '269', 'Israel': '127', 'Ivory Coast': '83',
-                        'Jamaica': '129', 'Jordan': '130', 'Kazakhstan': '132', 'Kenya': '133', 'Kiribati': '270',
-                        'Kosovo': '271', 'Kuwait': '137', 'Kyrgyzstan': '134', 'Laos': '138', 'Latvia': '146',
-                        'Lebanon': '139', 'Lesotho': '143', 'Liberia': '140', 'Libya': '141', 'Liechtenstein': '272',
-                        'Lithuania': '144', 'Luxembourg': '145', 'Macao': '273', 'Macedonia': '151',
-                        'Madagascar': '149', 'Malawi': '158', 'Malaysia': '159', 'Maldives': '238', 'Mali': '152',
-                        'Malta': '227', 'Marshall Islands': '274', 'Martinique': '275', 'Mauritania': '157',
-                        'Mauritius': '239', 'Mayotte': '276', 'Mexico': '150', 'Micronesia, Federated States of': '277',
-                        'Moldova': '148', 'Monaco': '278', 'Mongolia': '154', 'Montenegro': '155', 'Montserrat': '279',
-                        'Morocco': '147', 'Mozambique': '156', 'Myanmar (Burma)': '153', 'Namibia': '160',
-                        'Nauru': '280', 'Nepal': '166', 'Netherlands Antilles': '243', 'New Caledonia': '233',
-                        'Nicaragua': '163', 'Niger': '161', 'Nigeria': '162', 'Niue': '281', 'Norfolk Island': '282',
-                        'Northern Mariana Islands': '283', 'Norway': '165', 'Oman': '168', 'Pakistan': '169',
-                        'Palau': '284', 'Palestinian Territory, Occupied': '285', 'Panama': '170',
-                        'Papua New Guinea': '173', 'Paraguay': '178', 'Peru': '171', 'Philippines': '172',
-                        'Puerto Rico': '175', 'Qatar': '179', 'Reunion': '304', 'Romania': '180', 'Rwanda': '182',
-                        'Saint Helena': '286', 'Saint Kitts and Nevis': '287', 'Saint Lucia': '244',
-                        'Saint Martin (French part)': '288', 'Saint Pierre and Miquelon': '289',
-                        'Saint Vincent and the Grenadines': '249', 'Samoa': '290', 'San Marino': '291',
-                        'Sao Tome and Principe': '292', 'Saudi Arabia': '183', 'Senegal': '185', 'Serbia': '189',
-                        'Seychelles': '293', 'Sierra Leone': '186', 'Singapore': '220',
-                        'Sint Maarten (Dutch part)': '337', 'Slovakia': '191', 'Slovenia': '192',
-                        'Solomon Islands': '242', 'Somalia': '188', 'South Africa': '215',
-                        'South Georgia and the South Sandwich Islands': '294', 'South Korea': '136',
-                        'South Sudan': '339', 'Sri Lanka': '142', 'Sudan': '184', 'Suriname': '190',
-                        'Svalbard and Jan Mayen': '295', 'Swaziland': '194', 'Sweden': '193', 'Switzerland': '80',
-                        'Taiwan': '204', 'Tajikistan': '199', 'Tanzania': '205', 'Thailand': '198',
-                        'Timor-Leste': '296', 'Togo': '197', 'Tokelau': '297', 'Tonga': '298', 'Trinidad': '201',
-                        'Tunisia': '202', 'Turkey': '203', 'Turkmenistan': '200', 'Turks and Caicos Islands': '299',
-                        'Tuvalu': '300', 'Uganda': '206', 'Ukraine': '207', 'United Arab Emirates': '58',
-                        'United States Minor Outlying Islands': '302', 'Uruguay': '208', 'U.S. Virgin Islands': '248',
-                        'Uzbekistan': '210', 'Vanuatu': '221', 'Venezuela': '211', 'Vietnam': '212',
-                        'Wallis and Futuna': '224', 'Western Sahara': '213', 'Yemen': '214',
-                        'Zaire (Democratic Republic of Congo)': '216', 'Zambia': '217', 'Zimbabwe': '218'}
-        self.region = {'Afghanistan': 'AF', 'Albania': 'AL', 'Algeria': 'DZ', 'American Samoa': 'AS', 'Andorra': 'AD',
-                       'Angola': 'AO', 'Anguilla': 'AI', 'Antigua and Barbuda': 'AG', 'Argentina': 'AR',
-                       'Armenia': 'AM', 'Aruba': 'AW', 'Australia': 'AU', 'Austria': 'AT', 'Azerbaijan': 'AZ',
-                       'Bahamas': 'BS', 'Bahrain': 'BH', 'Bangladesh': 'BD', 'Barbados': 'BB', 'Belarus': 'BY',
-                       'Belgium': 'BE', 'Belize': 'BZ', 'Benin': 'BJ', 'Bermuda': 'BM', 'Bhutan': 'BT', 'Bolivia': 'BO',
-                       'Bosnia and Herzegovina': 'BA', 'Botswana': 'BW', 'Bouvet Island': 'BV', 'Brazil': 'BR',
-                       'British Indian Ocean Territory': 'IO', 'British Virgin Islands': 'VG', 'Brunei': 'BN',
-                       'Bulgaria': 'BG', 'Burkina Faso': 'BF', 'Burundi': 'BI', 'Cambodia': 'KH', 'Cameroon': 'CM',
-                       'Canada': 'CA', 'Cape Verde': 'CV', 'Cayman Islands': 'KY', 'Central African Republic': 'CF',
-                       'Chad': 'TD', 'Chile': 'CL', 'China': 'CN', 'Christmas Island': 'CX',
-                       'Cocos (Keeling) Islands': 'CC', 'Colombia': 'CO', 'Comoros': 'KM', 'Congo, Republic of': 'CG',
-                       'Cook Islands': 'CK', 'Costa Rica': 'CR', 'Croatia': 'HR', 'Curaçao': 'CW', 'Cyprus': 'CY',
-                       'Czech Republic': 'CZ', 'Denmark': 'DK', 'Djibouti': 'DJ', 'Dominica': 'DM',
-                       'Dominican Republic': 'DO', 'Ecuador': 'EC', 'Egypt': 'EG', 'El Salvador': 'SV',
-                       'Equatorial Guinea': 'GQ', 'Eritrea': 'ER', 'Estonia': 'EE', 'Ethiopia': 'ET',
-                       'Falkland Islands (Malvinas)': 'FK', 'Faroe Islands': 'FO', 'Fiji': 'FJ', 'Finland': 'FI',
-                       'France': 'FR', 'French Guiana': 'GF', 'French Polynesia': 'PF',
-                       'French Southern Territories': 'TF', 'Gabon': 'GA', 'Gambia': 'GM', 'Georgia': 'GE',
-                       'x': 'DE', 'Ghana': 'GH', 'Gibraltar': 'GI', 'Greece': 'GR', 'Greenland': 'GL',
-                       'Grenada': 'GD', 'Guadeloupe': 'GP', 'Guam': 'GU', 'Guatemala': 'GT', 'Guinea': 'GN',
-                       'Guinea-Bissau': 'GW', 'Guyana': 'GY', 'Haiti': 'HT', 'Heard Island and McDonald Islands': 'HM',
-                       'Holy See (Vatican City State)': 'VA', 'Honduras': 'HN', 'Hong Kong': 'HK', 'Hungary': 'HU',
-                       'Iceland': 'IS', 'India': 'IN', 'Indonesia': 'ID', 'Iraq': 'IQ', 'Ireland': 'IE',
-                       'Isle of Man': 'IM', 'Israel': 'IL', 'Italy': 'IT', 'Ivory Coast': 'IC', 'Jamaica': 'JM',
-                       'Japan': 'JP', 'Jordan': 'JO', 'Kazakhstan': 'KZ', 'Kenya': 'KE', 'Kiribati': 'KI',
-                       'Kosovo': 'KV', 'Kuwait': 'KW', 'Kyrgyzstan': 'KG', 'Laos': 'LA', 'Latvia': 'LV',
-                       'Lebanon': 'LB', 'Lesotho': 'LS', 'Liberia': 'LR', 'Libya': 'LY', 'Liechtenstein': 'LI',
-                       'Lithuania': 'LT', 'Luxembourg': 'LU', 'Macao': 'MO', 'Macedonia': 'MK', 'Madagascar': 'MG',
-                       'Malawi': 'MW', 'Malaysia': 'MY', 'Maldives': 'MV', 'Mali': 'ML', 'Malta': 'MT',
-                       'Marshall Islands': 'MH', 'Martinique': 'MQ', 'Mauritania': 'MR', 'Mauritius': 'MU',
-                       'Mayotte': 'YT', 'Mexico': 'MX', 'Micronesia, Federated States of': 'FM', 'Moldova': 'MD',
-                       'Monaco': 'MC', 'Mongolia': 'MN', 'Montenegro': 'ME', 'Montserrat': 'MS', 'Morocco': 'MA',
-                       'Mozambique': 'MZ', 'Myanmar (Burma)': 'MM', 'Namibia': 'NA', 'Nauru': 'NR', 'Nepal': 'NP',
-                       'Netherlands Antilles': 'AN', 'New Caledonia': 'NC', 'New Zealand': 'NZ', 'Nicaragua': 'NI',
-                       'Niger': 'NE', 'Nigeria': 'NG', 'Niue': 'NU', 'Norfolk Island': 'NF',
-                       'Northern Mariana Islands': 'MP', 'Norway': 'NO', 'Oman': 'OM', 'Pakistan': 'PK', 'Palau': 'PW',
-                       'Palestinian Territory, Occupied': 'PS', 'Panama': 'PA', 'Papua New Guinea': 'PG',
-                       'Paraguay': 'PY', 'Peru': 'PE', 'Philippines': 'PH', 'Poland': 'PL', 'Portugal': 'PT',
-                       'Puerto Rico': 'PR', 'Qatar': 'QA', 'Reunion': 'RE', 'Romania': 'RO', 'Russia': 'RU',
-                       'Rwanda': 'RW', 'Saint Helena': 'SH', 'Saint Kitts and Nevis': 'KN', 'Saint Lucia': 'LC',
-                       'Saint Martin (French part)': 'MF', 'Saint Pierre and Miquelon': 'PM',
-                       'Saint Vincent and the Grenadines': 'VC', 'Samoa': 'WS', 'San Marino': 'SM',
-                       'Sao Tome and Principe': 'ST', 'Saudi Arabia': 'SA', 'Senegal': 'SN', 'Serbia': 'RS',
-                       'Seychelles': 'SC', 'Sierra Leone': 'SL', 'Singapore': 'SG', 'Sint Maarten (Dutch part)': 'SX',
-                       'Slovakia': 'SK', 'Slovenia': 'SI', 'Solomon Islands': 'SB', 'Somalia': 'SO',
-                       'South Africa': 'ZA', 'South Georgia and the South Sandwich Islands': 'GS', 'South Korea': 'KR',
-                       'South Sudan': 'SS', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Sudan': 'SD', 'Suriname': 'SR',
-                       'Svalbard and Jan Mayen': 'SJ', 'Swaziland': 'SZ', 'Sweden': 'SE', 'Switzerland': 'CH',
-                       'Taiwan': 'TW', 'Tajikistan': 'TJ', 'Tanzania': 'TZ', 'Thailand': 'TH', 'The Netherlands': 'NL',
-                       'Timor-Leste': 'TL', 'Togo': 'TG', 'Tokelau': 'TK', 'Tonga': 'TO', 'Trinidad': 'TT',
-                       'Tunisia': 'TN', 'Turkey': 'TR', 'Turkmenistan': 'TM', 'Turks and Caicos Islands': 'TC',
-                       'Tuvalu': 'TV', 'Uganda': 'UG', 'Ukraine': 'UA', 'United Arab Emirates': 'AE',
-                       'United Kingdom': 'GB', 'United States': 'US', 'United States Minor Outlying Islands': 'UM',
-                       'Uruguay': 'UY', 'U.S. Virgin Islands': 'VI', 'Uzbekistan': 'UZ', 'Vanuatu': 'VU',
-                       'Venezuela': 'VE', 'Vietnam': 'VN', 'Wallis and Futuna': 'WF', 'Western Sahara': 'EH',
-                       'Yemen': 'YE', 'Zaire (Democratic Republic of Congo)': 'CD', 'Zambia': 'ZM', 'Zimbabwe': 'ZW'}
-        self.language = {'Deutsch': 'de', 'English (UK)': 'en-GB', 'English (US)': 'en-US', 'Español': 'es',
-                         'Français': 'fr', 'Italiano': 'it', '日本語': 'ja', 'Nederlands': 'nl', 'Polski': 'pl',
-                         'Português': 'pt', 'Русский': 'ru'}
-        self.currency = {'USD': {'abbr': 'USD', 'symbol': '$', 'currency': 'United States Dollar'},
-                         'CAD': {'abbr': 'CAD', 'symbol': '$', 'currency': 'Canadian Dollar'},
-                         'EUR': {'abbr': 'EUR', 'symbol': '€', 'currency': 'Euro'},
-                         'GBP': {'abbr': 'GBP', 'symbol': '£', 'currency': 'British Pound'},
-                         'AUD': {'abbr': 'AUD', 'symbol': '$', 'currency': 'Australian Dollar'},
-                         'JPY': {'abbr': 'JPY', 'symbol': '¥', 'currency': 'Japanese Yen'},
-                         'CNY': {'abbr': 'CNY', 'symbol': '¥', 'currency': 'Chinese Yuan'},
-                         'CZK': {'abbr': 'CZK', 'symbol': 'Kč', 'currency': 'Czech Koruna'},
-                         'DKK': {'abbr': 'DKK', 'symbol': 'kr', 'currency': 'Danish Krone'},
-                         'HKD': {'abbr': 'HKD', 'symbol': '$', 'currency': 'Hong Kong Dollar'},
-                         'HUF': {'abbr': 'HUF', 'symbol': 'Ft', 'currency': 'Hungarian Forint'},
-                         'INR': {'abbr': 'INR', 'symbol': '₹', 'currency': 'Indian Rupee'},
-                         'IDR': {'abbr': 'IDR', 'symbol': 'Rp', 'currency': 'Indonesian Rupiah'},
-                         'ILS': {'abbr': 'ILS', 'symbol': '₪', 'currency': 'Israeli Shekel'},
-                         'MYR': {'abbr': 'MYR', 'symbol': 'RM', 'currency': 'Malaysian Ringgit'},
-                         'MXN': {'abbr': 'MXN', 'symbol': '$', 'currency': 'Mexican Peso'},
-                         'MAD': {'abbr': 'MAD', 'symbol': 'DH', 'currency': 'Moroccan Dirham'},
-                         'NZD': {'abbr': 'NZD', 'symbol': '$', 'currency': 'New Zealand Dollar'},
-                         'NOK': {'abbr': 'NOK', 'symbol': 'kr', 'currency': 'Norwegian Krone'},
-                         'PHP': {'abbr': 'PHP', 'symbol': '₱', 'currency': 'Philippine Peso'},
-                         'SGD': {'abbr': 'SGD', 'symbol': '$', 'currency': 'Singapore Dollar'},
-                         'VND': {'abbr': 'VND', 'symbol': '₫', 'currency': 'Vietnamese Dong'},
-                         'ZAR': {'abbr': 'ZAR', 'symbol': 'R', 'currency': 'South African and'},
-                         'SEK': {'abbr': 'SEK', 'symbol': 'kr', 'currency': 'Swedish Krona'},
-                         'CHF': {'abbr': 'CHF', 'symbol': '', 'currency': 'Swiss Franc'},
-                         'THB': {'abbr': 'THB', 'symbol': '฿', 'currency': 'Thai Baht'},
-                         'TWD': {'abbr': 'TWD', 'symbol': 'NT$', 'currency': 'Taiwan New Dollar'},
-                         'TRY': {'abbr': 'TRY', 'symbol': '₺', 'currency': 'Turkish Lira'},
-                         'PLN': {'abbr': 'PLN', 'symbol': 'zł', 'currency': 'Polish Zloty'},
-                         'BRL': {'abbr': 'BRL', 'symbol': 'R$', 'currency': 'Brazilian Real'}}
+        pass
 
     # 两个一一对应的txt，按行对应组合成字典
     def two_file_to_dict(self, file1, file2):

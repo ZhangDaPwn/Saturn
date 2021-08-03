@@ -30,7 +30,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)  # 禁用requ
 class HttpHelper(object):
     name = 'HttpHelper'
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.log = LogHandler(self.name, file=True)
         self.response = Response()
 
@@ -56,14 +56,14 @@ class HttpHelper(object):
                                                  **kwargs)
                 else:
                     self.response = requests.get(url=url, headers=headers, timeout=timeout, verify=False, **kwargs)
-                return self.response
+                return self
             except Exception as e:
                 self.log.error("get: %s error: %s" % (url, str(e)))
                 retry_times -= 1
                 if retry_times <= 0:
                     resp = Response()
                     resp.status_code = 200
-                    return self.response
+                    return self
                 self.log.info("get retry %s second after" % retry_interval)
                 time.sleep(retry_interval)
 
@@ -88,14 +88,14 @@ class HttpHelper(object):
                 self.response = requests.post(url=url, headers=headers, params=params, data=data, json=json,
                                               timeout=timeout, verify=False,
                                               **kwargs)
-                return self.response
+                return self
             except Exception as e:
                 self.log.error("post: %s error: %s" % (url, str(e)))
                 retry_times -= 1
                 if retry_times <= 0:
                     resp = Response()
                     resp.status_code = 200
-                    return self.response
+                    return self
                 self.log.info("post retry %s second after" % retry_interval)
                 time.sleep(retry_interval)
 
