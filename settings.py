@@ -29,8 +29,8 @@ HOST = "0.0.0.0"
 PORT = 9696
 
 # 评论相关设置
-COMMENT_NUMBER_MAX = 200  # 评论爬取上限
-COMMENT_PAGE_MAX = 30     # 评论爬取页数上限
+COMMENT_NUMBER_MAX = 500  # 评论爬取上限
+COMMENT_PAGE_MAX = 50     # 评论爬取页数上限
 COMMENT_WORD_MAX = 3000   # 单条评论字数上限
 NICK_WORD_MAX = 100       # 评论用户名字数上限
 REPLY_WORD_MAX = 300      # 回复评论字数上限
