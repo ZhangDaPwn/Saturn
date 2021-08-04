@@ -1991,15 +1991,18 @@ class ParseAliexpress(object):
             goods['description'] = page_module['description']
             rating = title_module['feedbackRating']
             goods['rating'] = round(float(rating['averageStar']), 2)
-            goods['regularPrice'] = round(float(price_module['minAmount']['value']), 2) if 'minAmount' in price_module else 0
-            goods['price'] = round(float(price_module['maxActivityAmount']['value']), 2) if 'maxActivityAmount' in price_module else 0
+            goods['regularPrice'] = round(float(price_module['minAmount']['value']),
+                                          2) if 'minAmount' in price_module else 0
+            goods['price'] = round(float(price_module['maxActivityAmount']['value']),
+                                   2) if 'maxActivityAmount' in price_module else 0
             goods['shelfTime'] = ''
             goods['updateTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 更新时间
             goods['purchaseMin'] = 1
             goods['purchaseMax'] = quantity_module['totalAvailQuantity']
             goods['sales'] = title_module['tradeCount']
             goods['visit'] = random.randint(1000, 5000)
-            goods['collection'] = action_module['itemWishedCount'] if 'itemWishedCount' in action_module else random.randint(800, 1000)
+            goods['collection'] = action_module[
+                'itemWishedCount'] if 'itemWishedCount' in action_module else random.randint(800, 1000)
 
             data['goods'] = goods
             data['id'] = goods['id']
@@ -2057,6 +2060,210 @@ class ParseAliexpress(object):
             self.log.error(e)
         finally:
             return data
+
+
+class ParseVShop(object):
+    def __init__(self, url):
+        self.name = 'ParseVShop'
+        self.platform = 'vhsop'
+        self.log = LogHandler(self.name)
+        self.url = url
+
+    @property
+    def parse_product_id(self):
+        product_id = ''
+        try:
+            pattern = re.compile(r'prodId=(.*)', re.DOTALL)
+            product_id = re.findall(pattern, self.url)[0]
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return product_id
+
+    @property
+    def parse_domain(self):
+        domain = ''
+        try:
+            pattern = re.compile(r'(.*?)product\?', re.DOTALL)
+            domain = re.findall(pattern, self.url)[0]
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return domain
+
+    def getnerate_option(self, main, field, type):
+        goods_option = {}
+        goods_option['main'] = main
+        goods_option['field'] = field
+        goods_option['type'] = type
+        return goods_option
+
+    def new_options_map(self, old_sub_opts):
+        new_sub_opts = []
+        for old_sub_opt in old_sub_opts:
+            new_sub_opt = {}
+            new_sub_opt['value'] = old_sub_opt['key']
+            new_sub_opt['price'] = old_sub_opt['value']
+            new_sub_opts.append(new_sub_opt)
+        return new_sub_opts
+
+    def get_chain_length(self):
+        chain_length = [
+            {
+                "value": '14'' (35cm)  - Child',
+                "price": 0
+            },
+            {
+                "value": '16'' (40cm)  - Young Adult',
+                "price": 0
+            },
+            {
+                "value": '18'' (45cm)  - Adult',
+                "price": 0
+            },
+            {
+                "value": '20'' (50cm)',
+                "price": 0
+            },
+            {
+                "value": '22'' (55cm)',
+                "price": 0
+            },
+            {
+                "value": '24'' (60cm) ',
+                "price": 0
+            }
+        ]
+        return chain_length
+
+    def generate_new_values(self, values, sub_opt_seeds):
+        new_values = []
+        for value in values:
+            new_value = {}
+            key = value['key']
+            new_value['value'] = value['key']
+            new_value['price'] = value['value']
+            num = key.split(' ')[0]
+            new_value['suboptions'] = self.sub_opts(num, sub_opt_seeds)
+            new_values.append(new_value)
+        return new_values
+
+    def sub_opts(self, num, sub_opt_seeds):
+        result = []
+        for i in range(1, int(num) + 1):
+            seq = self.number_seq_map(str(i))
+            for sub_opt_seed in sub_opt_seeds:
+                field = seq + ' ' + sub_opt_seed['field']
+                type = self.opt_type_map(sub_opt_seed['type'])
+                new_sub_option = self.getnerate_option(0, field, type)
+                if type == 1 or type == 2:
+                    # new_sub_option['values'] = sub_opt_seed['values']
+                    new_sub_option['values'] = self.new_options_map(sub_opt_seed['values'])
+                result.append(new_sub_option)
+        return result
+
+    def number_seq_map(self, index):
+        num_seq = {
+            '1': '1st',
+            '2': '2nd',
+            '3': '3rd',
+            '4': '4th',
+            '5': '5th',
+            '6': '6th',
+            '7': '7th',
+            '8': '8th',
+            '9': '9th',
+            '10': '10th',
+            '11': '11th',
+            '12': '12th',
+            '13': '13th',
+            '14': '14th',
+            '15': '15th',
+            '16': '16th',
+            '17': '17th',
+            '18': '18th',
+            '19': '19th',
+            '20': '20th'
+        }
+        if index in num_seq:
+            return num_seq[index]
+        else:
+            return '0th'
+
+    def opt_type_map(self, opt_type):
+        types = {
+            'text_options': 1,
+            'img_options': 2,
+            'upload_img': 4,
+            'text': 3
+        }
+        if opt_type in types:
+            return types[opt_type]
+        else:
+            return 0
+
+    # 商品基础数据：goodsSpu
+    def parse_goods_spu(self, data: dict) -> dict:
+        goodsSpu = {}
+        try:
+            goodsSpu['goodsNum'] = data['sku']
+            goodsSpu['goodsName'] = data['title']
+            goodsSpu['mainImg'] = data['mainImg']
+            goodsSpu['brief'] = ''
+            goodsSpu['description'] = data['description']
+            goodsSpu['commentScore'] = random.randint(3, 5)
+            goodsSpu['defaultPrice'] = data['discountPrice']
+            goodsSpu['shelfTime'] = ''
+            goodsSpu['updateTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 更新时间
+            goodsSpu['purchaseMin'] = 1
+            goodsSpu['purchaseMax'] = 999
+            goodsSpu['sales'] = random.randint(300, 500)
+            goodsSpu['visitNum'] = random.randint(1000, 5000)
+            goodsSpu['collection'] = random.randint(200, 600)
+            goodsSpu['defaultWeight'] = random.randint(10, 25)
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return goodsSpu
+
+    # 商品图片及视频数据：goodsResources
+    def parse_goods_resources(self, data: dict) -> list:
+        resource = []
+        try:
+            resource = [{'type': 1, 'url': url} for url in data['images'].split(',')]
+        except Exception as e:
+            self.log.error(str(e))
+        finally:
+            return resource
+
+    # 商品定制化参数: goodsOptions
+    def parse_options(self, data: dict) -> list:
+        options = data['options']
+        json_opts = json.loads(options)
+        goods_options = []
+        for opt in json_opts:
+            goods_option = {}
+            opt_type = opt['type']
+            field = opt['field']
+            if 'text_options' == opt_type:
+                goods_option = self.getnerate_option(1, field, 1)
+                goods_option['values'] = self.new_options_map(opt['values'])
+                if "chain length" == field.lower():
+                    goods_option['values'] = self.get_chain_length()
+            elif 'img_options' == opt_type:
+                goods_option = self.getnerate_option(1, field, 2)
+                goods_option['values'] = self.new_options_map(opt['values'])
+            elif 'upload_img' == opt_type:
+                goods_option = self.getnerate_option(1, field, 4)
+            elif 'text' == opt_type:
+                goods_option = self.getnerate_option(1, field, 3)
+            elif 'sub_options' == opt_type:
+                goods_option = self.getnerate_option(1, field, 1)
+                values = opt['values']
+                sub_opt_seeds = opt['subOptions']
+                goods_option['values'] = self.generate_new_values(values, sub_opt_seeds)
+            goods_options.append(goods_option)
+        return goods_options
 
 
 class ParseString(object):

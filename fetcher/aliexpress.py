@@ -66,7 +66,7 @@ class Aliexpress(object):
         finally:
             return goods
 
-    def main(self, url: str, source: int = 1, goods: int = 0, comment: int = 0, products: int = 0):
+    def main(self, url: str, source: int = 2, goods: int = 0, comment: int = 0, products: int = 0):
         data = {}
         url = url.replace('aliexpress.ru', 'www.aliexpress.com')
         try:
