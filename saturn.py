@@ -14,6 +14,7 @@ from fetcher.amazon import Amazon
 from fetcher.wayfair import Wayfair
 from fetcher.shoplazza import Shoplazza
 from fetcher.shopify import Shopify
+from fetcher.aliexpress import Aliexpress
 from settings import BANNER, slogan, PORT
 from handler.log_handler import LogHandler
 
@@ -23,7 +24,7 @@ log = LogHandler(name=name)
 
 
 class Product(BaseModel):
-    # platform：目前支持平台：etsy、amazon、wayfair、shoplazza、shopify
+    # platform：目前支持平台：etsy、amazon、wayfair、shoplazza、shopify、aliexpress
     platform: str = Field(..., description="The platform is e-commerce platform")
     # url：商品链接/商品列表链接
     url: str = Field(..., description="Product's url")
@@ -68,6 +69,8 @@ async def product(item: Product):
             data = Shoplazza().main(url=item.url, source=item.source, goods=item.goods)
         elif item.platform == "shopify":
             data = Shopify().main(url=item.url, source=item.source, goods=item.goods)
+        elif item.platform == "aliexpress":
+            data = Aliexpress().main(url=item.url, source=item.source, goods=item.goods)
     except Exception as e:
         log.error(str(e))
     finally:

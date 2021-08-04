@@ -143,6 +143,7 @@ if __name__ == '__main__':
 
     # 单品爬取测试：
     url = 'https://www.mobimiu.com/products/fashion-round-neck-long-sleeve-printed-t-shirt'
+    url = 'https://duduhouses.com/products/double-artificial--wreath-storage-bag-24--x-24--x-14--green'
     source = 1
     goods = 1
     result = Shoplazza().main(url=url, source=source, goods=goods)

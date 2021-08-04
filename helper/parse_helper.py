@@ -1950,13 +1950,12 @@ class ParseShopify(object):
 
 
 class ParseAliexpress(object):
-    def __init__(self, text, url):
-        self.name = 'ParseShopify'
-        self.platform = 'shopify'
+    def __init__(self, text):
+        self.name = 'ParseAliexpress'
+        self.platform = 'aliexpress'
         self.log = LogHandler(self.name)
-        self.ps = ParseString()
         self.text = text
-        self.url = url
+        self.data = self.parse_base_data
 
     # 提取商品基础数据
     @property
@@ -1971,33 +1970,36 @@ class ParseAliexpress(object):
         finally:
             return data
 
-
     # 按照商品池参数规格提取商品数据
     @property
     def parse_goods_info(self) -> dict:
         data = {}
         try:
             goods = {}
-            product = self.parse_base_data['product']
+            data = self.data['data']
+            action_module = data['actionModule']
+            title_module = data['titleModule']
+            page_module = data['pageModule']
+            price_module = data['priceModule']
+            quantity_module = data['quantityModule']
 
-            goods['id'] = product['id']
-            goods['name'] = product['title']
-            goods['url'] = self.url
-            goods['image'] = product['image']['src']
+            goods['id'] = page_module['productId']
+            goods['name'] = page_module['title']
+            goods['url'] = page_module['itemDetailUrl']
+            goods['image'] = page_module['imagePath']
             goods['brief'] = ''
-            goods['description'] = product['body_html']
-            goods['rating'] = random.randint(3, 5)
-            variant = product['variants'][0]
-            goods['regularPrice'] = round(float(variant['price']), 2)
-            goods['price'] = goods['regularPrice']
-            # 需要转化时区
-            goods['shelfTime'] = str(datetime.strptime(variant['created_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
-            goods['updateTime'] = str(datetime.strptime(variant['updated_at'], "%Y-%m-%dT%H:%M:%S-04:00"))
+            goods['description'] = page_module['description']
+            rating = title_module['feedbackRating']
+            goods['rating'] = round(float(rating['averageStar']), 2)
+            goods['regularPrice'] = round(float(price_module['minAmount']['value']), 2) if 'minAmount' in price_module else 0
+            goods['price'] = round(float(price_module['maxActivityAmount']['value']), 2) if 'maxActivityAmount' in price_module else 0
+            goods['shelfTime'] = ''
+            goods['updateTime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())  # 更新时间
             goods['purchaseMin'] = 1
-            goods['purchaseMax'] = 999
-            goods['sales'] = random.randint(200, 800)
+            goods['purchaseMax'] = quantity_module['totalAvailQuantity']
+            goods['sales'] = title_module['tradeCount']
             goods['visit'] = random.randint(1000, 5000)
-            goods['collection'] = random.randint(800, 1000)
+            goods['collection'] = action_module['itemWishedCount'] if 'itemWishedCount' in action_module else random.randint(800, 1000)
 
             data['goods'] = goods
             data['id'] = goods['id']
@@ -2006,6 +2008,54 @@ class ParseAliexpress(object):
             self.log.error(str(e))
         finally:
             # print(json.dumps(data, indent=2, ensure_ascii=False))
+            return data
+
+    # 商品基础数据：goodsSpu
+    @property
+    def parse_goods_spu(self) -> dict:
+        data = {}
+        try:
+            goods = self.parse_goods_info['goods']
+            # 基础参数中提取数据部分
+            data['goodsNum'] = goods['id']
+            data['goodsName'] = goods['name']
+            data['mainImg'] = goods['image']
+            data['brief'] = goods['brief']
+            data['description'] = goods['description']
+            data['commentScore'] = goods['rating']
+            data['defaultPrice'] = goods['price']
+            data['shelfTime'] = goods['shelfTime']
+            data['updateTime'] = goods['updateTime']
+            data['purchaseMin'] = goods['purchaseMin']
+            data['purchaseMax'] = goods['purchaseMax']
+            data['sales'] = goods['sales']
+            data['visitNum'] = goods['visit']
+            data['collection'] = goods['collection']
+        except Exception as error:
+            self.log.error(error)
+        finally:
+            return data
+
+    # 商品图片及视频数据：goodsResources
+    @property
+    def parse_goods_resources(self) -> list:
+        data = []
+        try:
+            data = [{'url': url, 'type': 1} for url in self.data['data']['imageModule']['imagePathList']]
+        except Exception as e:
+            self.log.error(e)
+        finally:
+            return data
+
+    # 商品多规格参数: skuList
+    @property
+    def parse_sku_list(self) -> list:
+        data = []
+        try:
+            data = self.data['data']['skuModule']['productSKUPropertyList']
+        except Exception as e:
+            self.log.error(e)
+        finally:
             return data
 
 

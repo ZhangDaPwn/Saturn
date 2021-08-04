@@ -151,3 +151,9 @@
 2021-08-03 17:16:16,652 parse_helper.py[line:1625] ERROR 'visit'
 2021-08-03 17:17:59,616 parse_helper.py[line:1496] ERROR list index out of range
 2021-08-03 17:20:24,843 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-04 16:02:17,748 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-04 16:02:18,817 parse_helper.py[line:1496] ERROR list index out of range
+2021-08-04 16:02:18,818 parse_helper.py[line:1596] ERROR 'product'
+2021-08-04 16:02:18,818 parse_helper.py[line:1624] ERROR 'goods'
+2021-08-04 16:02:18,819 parse_helper.py[line:1641] ERROR 'product'
+2021-08-04 16:02:18,819 parse_helper.py[line:1659] ERROR 'product'

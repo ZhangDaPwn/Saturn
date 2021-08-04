@@ -175,9 +175,10 @@ if __name__ == '__main__':
     start_time = time.time()
     url = 'https://www.etsy.com/listing/1034491487/minky-bear-lovey-woodland-bear-rug-baby'
     url = 'https://www.etsy.com/listing/748928449/bear-necklace-black-or-brown-grizzle'
+    url = 'https://www.etsy.com/hk-en/listing/776377544/double-name-ring-two-name-ring-in?ref=hp_rv-1&pro=1'
     source = 1
     goods = 1
-    comment = 1
+    comment = 0
     data = Etsy().main(url=url, source=source, goods=goods, comment=comment)
     print(json.dumps(data, indent=2, ensure_ascii=False))
     print("耗时：", time.time() - start_time)
